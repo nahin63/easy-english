@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#064e5a"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Easy English"><title>Easy English – সহজ ইংরেজি</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#f4f1ff;background:#041f2b;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(120deg,#052e3f,#064e5a,#0a3d6b,#0b5a45);}
+.bg i{position:absolute;border-radius:50%;opacity:.4;animation:f 22s ease-in-out infinite;will-change:transform}
+.bg i:nth-child(1){width:300px;height:300px;background:radial-gradient(circle,#12c4a0,transparent 68%);left:-60px;top:10%}
+.bg i:nth-child(2){width:360px;height:360px;background:radial-gradient(circle,#36d1dc,transparent 68%);right:-80px;top:40%;animation-delay:-5s}
+.bg i:nth-child(3){width:260px;height:260px;background:radial-gradient(circle,#8ff0d0,transparent 68%);left:30%;bottom:-80px;animation-delay:-9s}
+@keyframes g{50%{background-position:100% 50%}}@keyframes f{50%{transform:translate(40px,-60px) scale(1.2)}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+header{padding:18px 16px 6px;text-align:center}
+h1{margin:0;font-size:26px;background:linear-gradient(90deg,#8ff0d0,#12c4a0,#36d1dc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:13px;opacity:.8;margin-top:4px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px 14px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;}
+nav button{flex:none;border:1px solid #ffffff30;background:#ffffff14;color:#fff;padding:9px 14px;border-radius:99px;font-size:14px;cursor:pointer;transition:.25s}
+nav button.on{background:linear-gradient(90deg,#12c4a0,#1e88e5);border-color:transparent;transform:scale(1.06);box-shadow:0 6px 20px #1e88e566}
+main{max-width:760px;margin:0 auto;padding:6px 14px 60px}
+.card{background:#ffffff14;border:1px solid #ffffff26;border-radius:18px;padding:14px 16px;margin:10px 0;animation:pop .4s both}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.en{font-size:18px;font-weight:700}.bn{opacity:.9;margin-top:3px}.ex{font-size:14px;opacity:.75;margin-top:4px;font-style:italic}
+.ib{border:0;border-radius:50%;width:38px;height:38px;font-size:18px;cursor:pointer;background:#ffffff22;color:#fff;flex:none;transition:.2s}.ib:hover{transform:scale(1.15);background:#12c4a0}
+.btn{border:0;border-radius:12px;padding:10px 16px;font-size:14px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#12c4a0,#1e88e5);margin:4px 4px 0 0}
+.btn.alt{background:#ffffff22}
+input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #ffffff40;background:#0006;color:#fff;font-size:16px;font-family:inherit}
+.bar{height:10px;border-radius:9px;background:#ffffff22;overflow:hidden;margin:8px 0}.bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,#8ff0d0,#12c4a0);transition:width .6s}
+.tense{margin-top:8px;padding:10px;border-radius:12px;background:#1e88e533;font-size:14px;line-height:1.5}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border-radius:12px;border:1px solid #ffffff30;background:#ffffff14;color:#fff;font-size:16px;cursor:pointer}
+.opt.ok{background:#1fbf75aa}.opt.no{background:#e5484daa}
+.chat{max-height:48vh;overflow-y:auto}.m{padding:10px 12px;border-radius:14px;margin:8px 0;max-width:88%;line-height:1.45;animation:pop .3s both}
+.m.u{background:#1e88e5cc;margin-left:auto}.m.a{background:#ffffff22}
+.mic{width:76px;height:76px;font-size:32px;margin:10px auto;display:block;border:0;border-radius:50%;color:#fff;cursor:pointer;background:linear-gradient(135deg,#12c4a0,#1e88e5);box-shadow:0 0 0 0 #12c4a099;animation:pl 2s infinite}
+.mic.rec{background:#e5484d;animation-duration:.8s}@keyframes pl{70%{box-shadow:0 0 0 22px #12c4a000}}
+#cel{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:#000a;text-align:center;padding:20px}
+#cel div.box{background:linear-gradient(135deg,#1e88e5,#12c4a0);border-radius:24px;padding:30px;max-width:340px;animation:pop .5s both;position:relative;z-index:2}
+.cf{position:fixed;top:-30px;font-size:24px;z-index:51;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.small{font-size:13px;opacity:.75}
+nav{display:none!important}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tile{background:#ffffff14;border:1px solid #ffffff2a;border-radius:20px;padding:18px 12px;text-align:center;cursor:pointer;transition:.3s;animation:pop .6s backwards;position:relative;overflow:hidden}
+.tile:hover{transform:translateY(-5px) scale(1.03);background:#12c4a033;box-shadow:0 10px 26px #1e88e555}
+.ti{font-size:38px}.tn{font-weight:700;font-size:17px;margin-top:6px}.td{font-size:12px;opacity:.75;margin-top:4px}
+.tile::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,#ffffff30,transparent);transform:skewX(-20deg);animation:sh 4.5s ease-in-out infinite;animation-delay:inherit}
+.tile .ti{display:inline-block;animation:bn 2.6s ease-in-out infinite}
+.tile:nth-child(2n) .ti{animation-delay:-.8s}.tile:nth-child(3n) .ti{animation-delay:-1.6s}
+.tile:nth-child(2){animation-delay:.07s,-1s}.tile:nth-child(3){animation-delay:.14s,-2s}.tile:nth-child(4){animation-delay:.21s,-.5s}.tile:nth-child(5){animation-delay:.28s,-1.5s}.tile:nth-child(6){animation-delay:.35s,-2.5s}
+.tile:active{transform:scale(.96)}
+@keyframes gl{50%{box-shadow:0 0 22px #12c4a055}}@keyframes sh{0%,55%{left:-70%}100%{left:130%}}@keyframes bn{50%{transform:translateY(-7px) rotate(-6deg) scale(1.1)}}
+.stats{display:flex;gap:14px;align-items:center}
+.ring{flex:none;position:relative;width:84px;height:84px}.ring svg{transform:rotate(-90deg)}.ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring .r2{stroke:url(#rg);stroke-dasharray:213.6;animation:rg 1.4s ease-out}.ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:700}
+@keyframes rg{from{stroke-dashoffset:213.6}}
+.nums{display:flex;gap:8px;flex:1;text-align:center}.nums div{flex:1;background:#ffffff14;border-radius:12px;padding:8px 2px}.nums b{display:block;font-size:20px;color:#8ff0d0}.nums small{font-size:11px;opacity:.8}
+.bars{display:flex;gap:7px;align-items:flex-end;height:110px;margin-top:10px}.bars div{flex:1;text-align:center;font-size:11px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.bars i{display:block;width:100%;border-radius:8px 8px 3px 3px;background:linear-gradient(#8ff0d0,#1e88e5);transform-origin:bottom;animation:gr .9s backwards}.bars em{font-style:normal;font-size:11px}
+@keyframes gr{from{transform:scaleY(0)}}
+.bar b{animation:bw 1.2s ease-out}@keyframes bw{from{width:0}}
+.logo{display:block;margin:0 auto 4px;filter:drop-shadow(0 8px 16px #1e88e5aa);animation:bn 3.2s ease-in-out infinite}
+footer{text-align:center;padding:18px 10px 40px;font-size:14px;opacity:.9}footer b{background:linear-gradient(90deg,#8ff0d0,#4fc3f7);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:16px}
+.tile::after{display:none}.noanim .card{animation:none}.card{content-visibility:auto;contain-intrinsic-size:auto 90px}
+.btn.done{background:#1fbf75}*{-webkit-tap-highlight-color:transparent}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<div class="bg"><i></i><i></i><i></i></div>
+<header><svg class="logo" viewBox="0 0 64 64" width="72" height="72"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff0d0"/><stop offset="1" stop-color="#1e88e5"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="18" fill="url(#lg)"/><path d="M13 24c7-3.500 13-3 19 1v21c-6-4-12-4.500-19-1z" fill="#fff"/><path d="M51 24c-7-3.500-13-3-19 1v21c6-4 12-4.500 19-1z" fill="#fff" opacity=".78"/><path d="M32 25v21" stroke="#1e88e5" stroke-width="1.500"/><circle cx="46" cy="15" r="8" fill="#ffd54f"/><text x="46" y="19" font-size="11" font-weight="800" text-anchor="middle" fill="#064e5a" font-family="system-ui">A</text></svg><h1>Easy English</h1><div class="sub">সহজে ইংরেজি শিখুন – প্রতিদিন একটু একটু করে</div></header>
+<nav id="nav"></nav><main id="app"></main>
+<footer>Developed By <b>Nahin</b> 💚</footer>
+<div id="cel"><div class="box"><div style="font-size:60px">🏆</div><h2>অভিনন্দন! 🎉</h2><p>এই টাস্কের সব শব্দ শেষ! তুমি দারুণ করছ। কাল আবার নতুন শব্দ নিয়ে দেখা হবে।</p><button class="btn alt" onclick="cel.style.display='none'">ধন্যবাদ 💜</button> <button class="btn" onclick="nextTask()">🚀 নতুন টাস্ক</button></div></div>
+<script>
+const $=s=>document.querySelector(s),cel=$('#cel');
+const DAILY=`water|পানি|I drink water every day.
+food|খাবার|The food is very tasty.
+rice|ভাত|We eat rice for lunch.
+tea|চা|Would you like some tea?
+house|বাড়ি|My house is near the market.
+door|দরজা|Please close the door.
+window|জানালা|Open the window, please.
+bed|বিছানা|I go to bed at ten.
+phone|ফোন|My phone is on the table.
+money|টাকা|I need some money.
+market|বাজার|I go to the market on Friday.
+bus|বাস|The bus is late today.
+road|রাস্তা|This road is very busy.
+school|স্কুল|The children go to school.
+teacher|শিক্ষক|My teacher is kind.
+book|বই|I am reading a book.
+pen|কলম|Can I borrow your pen?
+friend|বন্ধু|He is my best friend.
+mother|মা|My mother cooks well.
+father|বাবা|My father works hard.
+brother|ভাই|My brother plays football.
+sister|বোন|My sister loves music.
+morning|সকাল|Good morning!
+night|রাত|Good night, sleep well.
+today|আজ|Today is a sunny day.
+tomorrow|আগামীকাল|See you tomorrow.
+hungry|ক্ষুধার্ত|I am hungry now.
+tired|ক্লান্ত|She is tired after work.
+happy|খুশি|We are happy today.
+sad|দুঃখিত|Why are you sad?
+hot|গরম|The weather is hot.
+cold|ঠান্ডা|The water is cold.
+big|বড়|It is a big city.
+small|ছোট|I have a small room.
+new|নতুন|I bought a new shirt.
+old|পুরোনো|This is an old car.
+eat|খাওয়া|Let us eat together.
+drink|পান করা|Drink more water.
+sleep|ঘুমানো|I sleep eight hours.
+walk|হাঁটা|I walk to work.
+run|দৌড়ানো|He can run fast.
+buy|কেনা|I want to buy bread.
+sell|বিক্রি করা|They sell fresh fish.
+help|সাহায্য|Can you help me?
+work|কাজ|I work in an office.
+family|পরিবার|I love my family.
+clean|পরিষ্কার|Keep your room clean.
+doctor|ডাক্তার|I need to see a doctor.
+time|সময়|What time is it?
+thanks|ধন্যবাদ|Thanks for your help.`.split('\n').map(l=>{const[a,b,c]=l.split('|');return{w:a,b,s:c}});
+const EXTRA=`love:ভালোবাসা,life:জীবন,world:পৃথিবী,country:দেশ,city:শহর,village:গ্রাম,river:নদী,tree:গাছ,flower:ফুল,sun:সূর্য,moon:চাঁদ,star:তারা,sky:আকাশ,rain:বৃষ্টি,wind:বাতাস,fire:আগুন,earth:মাটি,mountain:পাহাড়,sea:সমুদ্র,animal:প্রাণী,bird:পাখি,fish:মাছ,cat:বিড়াল,dog:কুকুর,cow:গরু,horse:ঘোড়া,milk:দুধ,bread:রুটি,egg:ডিম,fruit:ফল,apple:আপেল,banana:কলা,mango:আম,salt:লবণ,sugar:চিনি,oil:তেল,meat:মাংস,vegetable:সবজি,kitchen:রান্নাঘর,room:ঘর,chair:চেয়ার,table:টেবিল,key:চাবি,light:আলো,shirt:শার্ট,shoe:জুতা,hand:হাত,head:মাথা,eye:চোখ,ear:কান,nose:নাক,mouth:মুখ,heart:হৃদয়,face:চেহারা,body:শরীর,blood:রক্ত,health:স্বাস্থ্য,medicine:ওষুধ,hospital:হাসপাতাল,police:পুলিশ,office:অফিস,job:চাকরি,student:ছাত্র,question:প্রশ্ন,answer:উত্তর,word:শব্দ,language:ভাষা,story:গল্প,song:গান,game:খেলা,dream:স্বপ্ন,hope:আশা,fear:ভয়,anger:রাগ,truth:সত্য,lie:মিথ্যা,peace:শান্তি,war:যুদ্ধ,king:রাজা,power:শক্তি,success:সফলতা,beautiful:সুন্দর,good:ভালো,bad:খারাপ,easy:সহজ,difficult:কঠিন,fast:দ্রুত,slow:ধীর,strong:শক্তিশালী,weak:দুর্বল,rich:ধনী,poor:গরিব,give:দেওয়া,take:নেওয়া,come:আসা,go:যাওয়া,see:দেখা,hear:শোনা,speak:বলা,read:পড়া,write:লেখা,learn:শেখা,teach:শেখানো,think:ভাবা,know:জানা,want:চাওয়া,abroad:বিদেশে,accept:গ্রহণ করা,accident:দুর্ঘটনা,achieve:অর্জন করা,add:যোগ করা,address:ঠিকানা,adult:প্রাপ্তবয়স্ক,advice:পরামর্শ,afraid:ভীত,again:আবার,age:বয়স,agree:একমত হওয়া,air:বাতাস,allow:অনুমতি দেওয়া,alone:একা,always:সবসময়,angry:রাগান্বিত,arrive:পৌঁছানো,ask:জিজ্ঞাসা করা,attack:আক্রমণ,bank:ব্যাংক,basket:ঝুড়ি,beach:সমুদ্রসৈকত,beat:মারা,because:কারণ,become:হওয়া,begin:শুরু করা,believe:বিশ্বাস করা,between:মাঝখানে,bill:বিল,birth:জন্ম,bite:কামড়ানো,boat:নৌকা,borrow:ধার নেওয়া,boss:মালিক,bottle:বোতল,box:বাক্স,boy:ছেলে,brave:সাহসী,break:ভাঙা,breakfast:সকালের নাস্তা,bridge:সেতু,bright:উজ্জ্বল,bring:আনা,build:নির্মাণ করা,burn:পোড়ানো,busy:ব্যস্ত,call:ডাকা,careful:সতর্ক,carry:বহন করা,catch:ধরা,change:পরিবর্তন,cheap:সস্তা,child:শিশু,choose:বাছাই করা,climb:ওঠা,close:বন্ধ করা,cloth:কাপড়,cloud:মেঘ,coat:কোট,college:কলেজ,color:রং,cook:রান্না করা,copy:নকল,corner:কোণ,cost:খরচ,cough:কাশি,count:গণনা করা,court:আদালত,cover:ঢাকা,crowd:ভিড়,cry:কাঁদা,cut:কাটা,danger:বিপদ,dark:অন্ধকার,daughter:মেয়ে,dead:মৃত,dear:প্রিয়,decide:সিদ্ধান্ত নেওয়া,deep:গভীর,delay:দেরি,dinner:রাতের খাবার,dirty:নোংরা,doubt:সন্দেহ,dress:পোশাক,dry:শুকনো,early:তাড়াতাড়ি,earn:উপার্জন করা,east:পূর্ব,empty:খালি,end:শেষ,enemy:শত্রু,enjoy:উপভোগ করা,enough:যথেষ্ট,enter:প্রবেশ করা,example:উদাহরণ,exam:পরীক্ষা,expensive:দামি,explain:ব্যাখ্যা করা,fall:পড়ে যাওয়া,farmer:কৃষক,fat:মোটা,feel:অনুভব করা,fever:জ্বর,fight:লড়াই,fill:পূরণ করা,find:খুঁজে পাওয়া,finger:আঙুল,finish:শেষ করা,fix:ঠিক করা,floor:মেঝে,fly:ওড়া,follow:অনুসরণ করা,foot:পা,forest:বন,forget:ভুলে যাওয়া,forgive:ক্ষমা করা,free:মুক্ত,fresh:তাজা,full:পূর্ণ,future:ভবিষ্যৎ,garden:বাগান,gate:ফটক,gift:উপহার,girl:মেয়ে,glass:গ্লাস,gold:সোনা,grass:ঘাস,great:মহান,green:সবুজ,ground:মাটি,grow:বড় হওয়া,guest:অতিথি,hair:চুল,half:অর্ধেক,hard:শক্ত,hate:ঘৃণা করা,heavy:ভারী,hide:লুকানো,high:উঁচু,history:ইতিহাস,hold:ধরে রাখা,holiday:ছুটি,honest:সৎ,hotel:হোটেল,hour:ঘণ্টা,hurry:তাড়াহুড়া,hurt:ব্যথা দেওয়া,husband:স্বামী,idea:ধারণা,important:গুরুত্বপূর্ণ,island:দ্বীপ,join:যোগ দেওয়া,joy:আনন্দ,jump:লাফ দেওয়া,kill:হত্যা করা,kind:দয়ালু,kiss:চুমু,knee:হাঁটু,knife:ছুরি,knock:কড়া নাড়া,land:জমি,large:বিশাল,last:শেষ,late:দেরি,laugh:হাসা,law:আইন,lazy:অলস,leaf:পাতা,leave:ছেড়ে যাওয়া,left:বাম,leg:পা,lend:ধার দেওয়া,letter:চিঠি,lift:তোলা,line:রেখা,lip:ঠোঁট,list:তালিকা,listen:শোনা,live:বাস করা,lock:তালা,lonely:একাকী,long:লম্বা,look:তাকানো,lose:হারানো,loud:জোরে,low:নিচু,lucky:ভাগ্যবান,lunch:দুপুরের খাবার,machine:যন্ত্র,mad:পাগল,make:বানানো,man:পুরুষ,many:অনেক,map:মানচিত্র,marry:বিয়ে করা,meal:খাবার,mean:বোঝানো,meet:দেখা করা,member:সদস্য,middle:মধ্যম,mind:মন,mirror:আয়না,miss:মিস করা,mistake:ভুল,money:টাকা,month:মাস,mosque:মসজিদ,mud:কাদা,music:সংগীত,name:নাম,narrow:সরু,near:কাছে,neck:গলা,need:প্রয়োজন,neighbor:প্রতিবেশী,never:কখনো না,news:খবর,noise:শব্দ,north:উত্তর,notice:লক্ষ্য করা,number:সংখ্যা,obey:মান্য করা,offer:প্রস্তাব,often:প্রায়ই,open:খোলা,order:আদেশ,pain:ব্যথা,paint:রং করা,pair:জোড়া,paper:কাগজ,park:উদ্যান,party:অনুষ্ঠান,past:অতীত,pay:পরিশোধ করা,person:ব্যক্তি,pick:তোলা,picture:ছবি,piece:টুকরা,place:জায়গা,plan:পরিকল্পনা,plant:উদ্ভিদ,plate:থালা,play:খেলা করা,please:দয়া করে,pocket:পকেট,point:বিন্দু,pour:ঢালা,pray:প্রার্থনা করা,price:দাম,prize:পুরস্কার,problem:সমস্যা,promise:প্রতিজ্ঞা,pull:টানা,push:ঠেলা,quick:দ্রুত,quiet:শান্ত,rain:বৃষ্টি,reach:পৌঁছানো,ready:প্রস্তুত,real:আসল,reason:কারণ,remember:মনে রাখা,rent:ভাড়া,repeat:পুনরাবৃত্তি করা,rest:বিশ্রাম,return:ফিরে আসা,rice:চাল,ride:চড়া,right:ডান,ring:আংটি,rise:ওঠা,roof:ছাদ,rope:দড়ি,round:গোল,rule:নিয়ম,sand:বালু,save:বাঁচানো,say:বলা,season:ঋতু,seat:আসন,secret:গোপন,seed:বীজ,send:পাঠানো,sew:সেলাই করা,shade:ছায়া,share:ভাগ করা,sharp:ধারালো,sheep:ভেড়া,shine:উজ্জ্বল হওয়া,shop:দোকান,short:ছোট,shout:চিৎকার করা,show:দেখানো,sick:অসুস্থ,silver:রুপা,simple:সহজ,sing:গান গাওয়া,sit:বসা,skin:ত্বক,smell:গন্ধ,smile:হাসি,smoke:ধোঁয়া,snake:সাপ,soft:নরম,soil:মাটি,son:ছেলে,soon:শীঘ্রই,sorry:দুঃখিত,sound:শব্দ,south:দক্ষিণ,speed:গতি,spend:খরচ করা,stand:দাঁড়ানো,start:শুরু করা,station:স্টেশন,stay:থাকা,steal:চুরি করা,stone:পাথর,stop:থামা,street:রাস্তা,study:পড়াশোনা করা,summer:গ্রীষ্ম,sweet:মিষ্টি,swim:সাঁতার কাটা,tall:লম্বা,taste:স্বাদ,tax:কর,thick:মোটা,thin:পাতলা,thirsty:তৃষ্ণার্ত,throw:ছোড়া,ticket:টিকিট,tight:আঁটসাঁট,tooth:দাঁত,touch:স্পর্শ করা,town:শহর,travel:ভ্রমণ করা,trouble:ঝামেলা,trust:বিশ্বাস,try:চেষ্টা করা,turn:ঘোরা,uncle:চাচা,understand:বুঝতে পারা,use:ব্যবহার করা,usual:স্বাভাবিক,visit:দেখা করতে যাওয়া,voice:কণ্ঠ,wait:অপেক্ষা করা,wake:জেগে ওঠা,wall:দেয়াল,wash:ধোয়া,watch:দেখা,wear:পরা,weather:আবহাওয়া,wedding:বিয়ে,week:সপ্তাহ,welcome:স্বাগতম,west:পশ্চিম,wet:ভেজা,wide:প্রশস্ত,wife:স্ত্রী,win:জেতা,winter:শীতকাল,wish:ইচ্ছা,woman:নারী,wonder:বিস্ময়,wood:কাঠ,worry:দুশ্চিন্তা,wrong:ভুল,year:বছর,yellow:হলুদ,young:তরুণ`.split(',').map(x=>{const[w,b]=x.split(':');return{w,b}});
+const MORE=`airport:বিমানবন্দর,flight:উড়ান,passport:পাসপোর্ট,luggage:মালপত্র,tourist:পর্যটক,journey:যাত্রা,direction:দিক,distance:দূরত্ব,traffic:যানজট,driver:চালক,engine:ইঞ্জিন,fuel:জ্বালানি,train:ট্রেন,ship:জাহাজ,taxi:ট্যাক্সি,bicycle:সাইকেল,ticket:টিকিট,reservation:সংরক্ষণ,menu:খাবারের তালিকা,waiter:পরিবেশক,restaurant:রেস্তোরাঁ,delicious:সুস্বাদু,spicy:ঝাল,bitter:তেতো,sour:টক,chicken:মুরগি,beef:গরুর মাংস,lentil:ডাল,potato:আলু,onion:পেঁয়াজ,garlic:রসুন,ginger:আদা,chili:মরিচ,tomato:টমেটো,carrot:গাজর,cucumber:শসা,orange:কমলালেবু,grape:আঙুর,coconut:নারকেল,honey:মধু,butter:মাখন,cheese:পনির,juice:রস,coffee:কফি,soup:স্যুপ,snack:নাস্তা,knowledge:জ্ঞান,education:শিক্ষা,subject:বিষয়,lesson:পাঠ,homework:বাড়ির কাজ,library:গ্রন্থাগার,dictionary:অভিধান,grammar:ব্যাকরণ,sentence:বাক্য,meaning:অর্থ,spelling:বানান,pronounce:উচ্চারণ করা,practice:অভ্যাস করা,improve:উন্নতি করা,confident:আত্মবিশ্বাসী,fluent:সাবলীল,skill:দক্ষতা,talent:প্রতিভা,experience:অভিজ্ঞতা,career:পেশা,salary:বেতন,manager:ব্যবস্থাপক,employee:কর্মচারী,customer:ক্রেতা,business:ব্যবসা,company:প্রতিষ্ঠান,meeting:সভা,interview:সাক্ষাৎকার,resume:জীবনবৃত্তান্ত,project:প্রকল্প,deadline:শেষ সময়,profit:লাভ,loss:ক্ষতি,budget:বাজেট,loan:ঋণ,saving:সঞ্চয়,income:আয়,expense:ব্যয়,trade:ব্যবসা-বাণিজ্য,industry:শিল্প,factory:কারখানা,worker:শ্রমিক,computer:কম্পিউটার,internet:ইন্টারনেট,website:ওয়েবসাইট,email:ইমেইল,message:বার্তা,password:পাসওয়ার্ড,screen:পর্দা,keyboard:কীবোর্ড,camera:ক্যামেরা,video:ভিডিও,photo:ছবি,battery:ব্যাটারি,charger:চার্জার,network:নেটওয়ার্ক,software:সফটওয়্যার,download:ডাউনলোড,upload:আপলোড,search:খোঁজা,headache:মাথাব্যথা,stomach:পেট,throat:গলা,cold:সর্দি,injury:আঘাত,surgery:অস্ত্রোপচার,patient:রোগী,nurse:সেবিকা,pharmacy:ওষুধের দোকান,tablet:বড়ি,vaccine:টিকা,exercise:ব্যায়াম,diet:খাদ্যাভ্যাস,healthy:সুস্থ,weight:ওজন,height:উচ্চতা,breath:শ্বাস,sleepy:ঘুম ঘুম,dizzy:মাথা ঘোরা,allergy:অ্যালার্জি,emotion:আবেগ,feeling:অনুভূতি,excited:উত্তেজিত,nervous:নার্ভাস,proud:গর্বিত,jealous:ঈর্ষান্বিত,shy:লাজুক,lonely:একাকী,grateful:কৃতজ্ঞ,curious:কৌতূহলী,patient:ধৈর্যশীল,polite:ভদ্র,rude:অভদ্র,generous:উদার,selfish:স্বার্থপর,clever:চতুর,foolish:নির্বোধ,careless:অসতর্ক,serious:গম্ভীর,funny:মজার,boring:বিরক্তিকর,interesting:আকর্ষণীয়,amazing:বিস্ময়কর,terrible:ভয়ানক,perfect:নিখুঁত,famous:বিখ্যাত,popular:জনপ্রিয়,modern:আধুনিক,ancient:প্রাচীন,common:সাধারণ,special:বিশেষ,different:ভিন্ন,similar:অনুরূপ,possible:সম্ভব,impossible:অসম্ভব,necessary:প্রয়োজনীয়,dangerous:বিপজ্জনক,safe:নিরাপদ,ready:প্রস্তুত,careful:সাবধান,smooth:মসৃণ,rough:খসখসে,flat:সমতল,straight:সোজা,deep:গভীর,shallow:অগভীর,wild:বন্য,tame:পোষা,lion:সিংহ,tiger:বাঘ,elephant:হাতি,monkey:বানর,rabbit:খরগোশ,deer:হরিণ,goat:ছাগল,duck:হাঁস,crow:কাক,parrot:টিয়া,butterfly:প্রজাপতি,bee:মৌমাছি,ant:পিঁপড়া,mosquito:মশা,spider:মাকড়সা,frog:ব্যাঙ,insect:পোকা,wave:ঢেউ,storm:ঝড়,flood:বন্যা,earthquake:ভূমিকম্প,thunder:বজ্র,lightning:বিদ্যুৎ চমকানো,fog:কুয়াশা,snow:তুষার,ice:বরফ,heat:তাপ,shadow:ছায়া,rainbow:রংধনু,desert:মরুভূমি,lake:হ্রদ,valley:উপত্যকা,hill:টিলা,cave:গুহা,field:মাঠ,crop:ফসল,harvest:ফসল কাটা,pond:পুকুর,well:কুয়া,wedding:বিবাহ,birthday:জন্মদিন,festival:উৎসব,religion:ধর্ম,prayer:প্রার্থনা,culture:সংস্কৃতি,tradition:ঐতিহ্য,custom:রীতি,society:সমাজ,government:সরকার,election:নির্বাচন,vote:ভোট,citizen:নাগরিক,freedom:স্বাধীনতা,justice:ন্যায়বিচার,right:অধিকার,duty:কর্তব্য,crime:অপরাধ,thief:চোর,prison:কারাগার,judge:বিচারক,lawyer:আইনজীবী,army:সেনাবাহিনী,soldier:সৈনিক,weapon:অস্ত্র,flag:পতাকা,capital:রাজধানী,border:সীমান্ত,population:জনসংখ্যা,together:একসাথে,suddenly:হঠাৎ,quickly:দ্রুতগতিতে,slowly:ধীরে ধীরে,maybe:হয়তো,perhaps:সম্ভবত,already:ইতিমধ্যে,still:এখনও,almost:প্রায়,especially:বিশেষ করে,instead:পরিবর্তে,without:ছাড়া,during:সময়কালে,against:বিরুদ্ধে,inside:ভিতরে,outside:বাইরে,above:উপরে,below:নিচে,behind:পিছনে,beside:পাশে,around:চারপাশে,through:মধ্য দিয়ে,beyond:ওপারে,improve:উন্নত করা,compare:তুলনা করা,discuss:আলোচনা করা,describe:বর্ণনা করা,prepare:প্রস্তুত করা,protect:রক্ষা করা,create:সৃষ্টি করা,destroy:ধ্বংস করা,develop:বিকাশ করা,discover:আবিষ্কার করা,invent:উদ্ভাবন করা,imagine:কল্পনা করা,suggest:প্রস্তাব দেওয়া,support:সমর্থন করা,receive:গ্রহণ করা,refuse:প্রত্যাখ্যান করা,realize:উপলব্ধি করা,recognize:চিনতে পারা,reduce:কমানো,increase:বাড়ানো,collect:সংগ্রহ করা,connect:সংযুক্ত করা,control:নিয়ন্ত্রণ করা,deliver:পৌঁছে দেওয়া,depend:নির্ভর করা,express:প্রকাশ করা,manage:পরিচালনা করা,mention:উল্লেখ করা,notice:খেয়াল করা,organize:সংগঠিত করা,perform:সম্পাদন করা,prefer:পছন্দ করা,produce:উৎপাদন করা,provide:সরবরাহ করা,publish:প্রকাশ করা,remove:সরানো,replace:প্রতিস্থাপন করা,report:প্রতিবেদন করা,require:প্রয়োজন হওয়া,solve:সমাধান করা,succeed:সফল হওয়া,survive:বেঁচে থাকা,wander:ঘুরে বেড়ানো,whisper:ফিসফিস করা,borrow:ধার করা`.split(',').map(x=>{const[w,b]=x.split(':');return{w,b}});
+const MORE2=`abandon:ত্যাগ করা,ability:সামর্থ্য,absent:অনুপস্থিত,accurate:নির্ভুল,active:সক্রিয়,admire:প্রশংসা করা,advantage:সুবিধা,adventure:অভিযান,affect:প্রভাবিত করা,aim:লক্ষ্য,alarm:সতর্কসংকেত,alive:জীবিত,amount:পরিমাণ,anxious:উদ্বিগ্ন,apologize:ক্ষমা চাওয়া,appear:দেখা দেওয়া,appointment:সাক্ষাতের সময়,argue:তর্ক করা,arrange:সাজানো,artist:শিল্পী,attention:মনোযোগ,attract:আকর্ষণ করা,audience:দর্শক,author:লেখক,available:উপলব্ধ,average:গড়,avoid:এড়িয়ে চলা,award:পুরস্কার,aware:সচেতন,balance:ভারসাম্য,beginner:নবীন,benefit:উপকার,blame:দোষ দেওয়া,blind:অন্ধ,brain:মস্তিষ্ক,branch:শাখা,brief:সংক্ষিপ্ত,broken:ভাঙা,candle:মোমবাতি,cause:কারণ,celebrate:উদযাপন করা,center:কেন্দ্র,century:শতাব্দী,certain:নিশ্চিত,chain:শিকল,challenge:চ্যালেঞ্জ,chance:সুযোগ,character:চরিত্র,chief:প্রধান,circle:বৃত্ত,claim:দাবি,class:শ্রেণি,clear:স্পষ্ট,clock:ঘড়ি,comfort:আরাম,comment:মন্তব্য,community:সম্প্রদায়,complete:সম্পূর্ণ,condition:অবস্থা,confirm:নিশ্চিত করা,consider:বিবেচনা করা,contact:যোগাযোগ,continue:চালিয়ে যাওয়া,contract:চুক্তি,conversation:কথোপকথন,courage:সাহস,cruel:নিষ্ঠুর,cure:নিরাময়,curve:বাঁক,damage:ক্ষতি,date:তারিখ,debate:বিতর্ক,decrease:কমা,defend:রক্ষা করা,degree:ডিগ্রি,delight:আনন্দ,demand:দাবি,deny:অস্বীকার করা,design:নকশা,desire:ইচ্ছা,detail:বিস্তারিত,direct:সরাসরি,disease:রোগ,distant:দূরবর্তী,divide:ভাগ করা,double:দ্বিগুণ,draw:আঁকা,effort:প্রচেষ্টা,electric:বৈদ্যুতিক,emergency:জরুরি অবস্থা,encourage:উৎসাহ দেওয়া,energy:শক্তি,entire:সম্পূর্ণ,environment:পরিবেশ,equal:সমান,escape:পালানো,event:ঘটনা,evidence:প্রমাণ,exact:সঠিক,excellent:চমৎকার,exchange:বিনিময়,exist:বিদ্যমান থাকা,expect:আশা করা,explore:অন্বেষণ করা,fail:ব্যর্থ হওয়া,faith:বিশ্বাস,false:মিথ্যা,fashion:ফ্যাশন,fault:দোষ,favor:অনুগ্রহ,fee:ফি,figure:চিত্র,final:চূড়ান্ত,firm:দৃঢ়,fit:মানানসই,flame:শিখা,flavor:স্বাদ,focus:মনোযোগ দেওয়া,force:বল,foreign:বিদেশি,form:ফর্ম,fortune:ভাগ্য,friendly:বন্ধুসুলভ,fun:মজা,furniture:আসবাবপত্র,gain:লাভ করা,gap:ফাঁক,general:সাধারণ,gentle:কোমল,glad:আনন্দিত,goal:লক্ষ্য,guide:পথপ্রদর্শক,guilty:দোষী,habit:অভ্যাস,handle:সামলানো,happen:ঘটা,harm:ক্ষতি করা,heaven:স্বর্গ,helpful:সহায়ক,hero:নায়ক,honor:সম্মান,huge:বিশাল,human:মানুষ,humble:নম্র,hunt:শিকার করা,identity:পরিচয়,ignore:উপেক্ষা করা,illness:অসুস্থতা,image:ছবি,impact:প্রভাব,independent:স্বাধীন,influence:প্রভাব,inform:জানানো,instruction:নির্দেশনা,intelligent:বুদ্ধিমান,interest:আগ্রহ,introduce:পরিচয় করানো,invite:আমন্ত্রণ জানানো,issue:বিষয়,keep:রাখা,lack:অভাব,leader:নেতা,legal:বৈধ,level:স্তর,limit:সীমা,local:স্থানীয়,logic:যুক্তি,luck:ভাগ্য,major:প্রধান,manner:আচরণ,master:দক্ষ,match:মিল,material:উপকরণ,matter:বিষয়,measure:পরিমাপ,memory:স্মৃতি,mental:মানসিক,method:পদ্ধতি,minute:মিনিট,moment:মুহূর্ত,moral:নৈতিক,motion:গতি,nation:জাতি,natural:প্রাকৃতিক,nature:প্রকৃতি,neat:পরিপাটি,negative:নেতিবাচক,normal:স্বাভাবিক,object:বস্তু,observe:পর্যবেক্ষণ করা,obvious:স্পষ্ট,occasion:উপলক্ষ,opinion:মতামত,opportunity:সুযোগ,option:বিকল্প,ordinary:সাধারণ,origin:উৎস,pace:গতি,partner:সঙ্গী,passion:আবেগ,patience:ধৈর্য,pattern:নকশা,period:সময়কাল,permission:অনুমতি,personal:ব্যক্তিগত,physical:শারীরিক,plain:সরল,pleasure:আনন্দ,positive:ইতিবাচক,poverty:দারিদ্র্য,praise:প্রশংসা,pressure:চাপ,pride:গর্ব,private:ব্যক্তিগত,process:প্রক্রিয়া,progress:অগ্রগতি,proof:প্রমাণ,proper:যথাযথ,public:জনসাধারণ,purpose:উদ্দেশ্য,quality:গুণমান,quantity:পরিমাণ,rare:বিরল,rate:হার,recent:সাম্প্রতিক,record:নথি,region:অঞ্চল,relation:সম্পর্ক,relax:বিশ্রাম নেওয়া,relief:স্বস্তি,respect:শ্রদ্ধা,responsible:দায়িত্বশীল,result:ফলাফল,reward:পুরস্কার,risk:ঝুঁকি,role:ভূমিকা,sample:নমুনা,satisfy:সন্তুষ্ট করা,scene:দৃশ্য,science:বিজ্ঞান,section:অংশ,sense:অনুভূতি,series:ধারা,service:সেবা,shape:আকার,sight:দৃষ্টি,sign:চিহ্ন,silence:নীরবতা,single:একক,situation:পরিস্থিতি,social:সামাজিক,solid:শক্ত,source:উৎস,space:মহাকাশ,spirit:আত্মা,sport:খেলাধুলা,stage:মঞ্চ,standard:মান,step:ধাপ,stress:মানসিক চাপ,structure:কাঠামো,style:ধরন,suffer:কষ্ট পাওয়া,sudden:আকস্মিক,supply:সরবরাহ,surface:পৃষ্ঠতল,surprise:বিস্ময়,system:ব্যবস্থা,target:লক্ষ্য,task:কাজ,team:দল,theory:তত্ত্ব,tool:সরঞ্জাম,topic:বিষয়,total:মোট,training:প্রশিক্ষণ,trend:প্রবণতা,trip:সফর,type:ধরন,unit:একক,unique:অনন্য,urgent:জরুরি,value:মূল্য,variety:বৈচিত্র্য,victory:বিজয়,view:দৃষ্টিভঙ্গি,warm:উষ্ণ,warn:সতর্ক করা,waste:অপচয়,wealth:সম্পদ,wise:জ্ঞানী,witness:সাক্ষী,worth:মূল্যবান,youth:যৌবন`.split(',').map(x=>{const[w,b]=x.split(':');return{w,b}});
+const MORE3=`bathroom:গোসলখানা,bedroom:শোবার ঘর,blanket:কম্বল,pillow:বালিশ,carpet:কার্পেট,curtain:পর্দা,ceiling:ছাদ,stairs:সিঁড়ি,balcony:বারান্দা,fan:পাখা,lamp:বাতি,broom:ঝাড়ু,bucket:বালতি,soap:সাবান,towel:তোয়ালে,comb:চিরুনি,toothbrush:টুথব্রাশ,umbrella:ছাতা,bag:ব্যাগ,wallet:মানিব্যাগ,glasses:চশমা,necklace:হার,belt:বেল্ট,cap:টুপি,socks:মোজা,trousers:প্যান্ট,saree:শাড়ি,scarf:স্কার্ফ,spoon:চামচ,fork:কাঁটাচামচ,cup:কাপ,bowl:বাটি,pot:হাঁড়ি,pan:কড়াই,stove:চুলা,fridge:ফ্রিজ,oven:ওভেন,pencil:পেন্সিল,eraser:রাবার,ruler:স্কেল,notebook:খাতা,desk:ডেস্ক,blackboard:ব্ল্যাকবোর্ড,classroom:শ্রেণিকক্ষ,principal:অধ্যক্ষ,mathematics:গণিত,physics:পদার্থবিজ্ঞান,chemistry:রসায়ন,biology:জীববিজ্ঞান,geography:ভূগোল,baby:শিশু,grandfather:দাদা,grandmother:দাদি,aunt:খালা,cousin:চাচাতো ভাই,nephew:ভাতিজা,niece:ভাতিজি,relative:আত্মীয়,stranger:অপরিচিত,gentleman:ভদ্রলোক,lady:ভদ্রমহিলা,twin:যমজ,orphan:এতিম,shoulder:কাঁধ,elbow:কনুই,wrist:কব্জি,chest:বুক,back:পিঠ,tongue:জিভ,forehead:কপাল,cheek:গাল,chin:চিবুক,eyebrow:ভ্রু,beard:দাড়ি,palm:তালু,thumb:বুড়ো আঙুল,nail:নখ,bone:হাড়,muscle:পেশি,lung:ফুসফুস,kidney:কিডনি,liver:যকৃৎ,bake:সেঁকা,boil:সিদ্ধ করা,fry:ভাজা,chop:কুচি করা,stir:নাড়া,mix:মেশানো,pack:গুছানো,sweep:ঝাড়ু দেওয়া,shave:দাড়ি কামানো,dance:নাচা,race:দৌড় প্রতিযোগিতা,kick:লাথি মারা,bounce:লাফানো,roll:গড়ানো,spin:ঘোরানো,shake:ঝাঁকানো,stretch:প্রসারিত করা,bend:বাঁকানো,crawl:হামাগুড়ি দেওয়া,sneeze:হাঁচি দেওয়া,yawn:হাই তোলা,hug:আলিঙ্গন করা,greet:অভিবাদন জানানো,beg:ভিক্ষা করা,cheat:প্রতারণা করা,bargain:দরদাম করা,bush:ঝোপ,root:শিকড়,petal:পাপড়ি,thorn:কাঁটা,jungle:জঙ্গল,waterfall:জলপ্রপাত,shore:তীর,sunrise:সূর্যোদয়,sunset:সূর্যাস্ত,midnight:মধ্যরাত,noon:দুপুর,evening:সন্ধ্যা,dawn:ভোর,weekend:সাপ্তাহিক ছুটি,monday:সোমবার,tuesday:মঙ্গলবার,wednesday:বুধবার,thursday:বৃহস্পতিবার,friday:শুক্রবার,saturday:শনিবার,sunday:রবিবার,january:জানুয়ারি,february:ফেব্রুয়ারি,march:মার্চ,april:এপ্রিল,may:মে,june:জুন,july:জুলাই,august:আগস্ট,september:সেপ্টেম্বর,october:অক্টোবর,november:নভেম্বর,december:ডিসেম্বর,one:এক,two:দুই,three:তিন,four:চার,five:পাঁচ,six:ছয়,seven:সাত,eight:আট,nine:নয়,ten:দশ,hundred:একশো,thousand:হাজার,million:মিলিয়ন,first:প্রথম,second:দ্বিতীয়,third:তৃতীয়,red:লাল,blue:নীল,black:কালো,white:সাদা,pink:গোলাপি,purple:বেগুনি,brown:বাদামি,gray:ধূসর,shelf:তাক,ladder:মই,hammer:হাতুড়ি,needle:সুই,thread:সুতা,scissors:কাঁচি,glue:আঠা,tape:ফিতা,envelope:খাম,stamp:ডাকটিকিট,parcel:পার্সেল,postman:ডাকপিয়ন,farm:খামার,tractor:ট্রাক্টর,fisherman:জেলে,carpenter:ছুতার,tailor:দর্জি,barber:নাপিত,mechanic:মিস্ত্রি,engineer:প্রকৌশলী,pilot:পাইলট,singer:গায়ক,actor:অভিনেতা,writer:লেখক,poet:কবি`.split(',').map(x=>{const[w,b]=x.split(':');return{w,b}});
+const MORE4=`home:বাসা,effect:প্রভাব/ফলাফল,about:সম্পর্কে,after:পরে,before:আগে,also:এছাড়াও,and:এবং,any:যেকোনো,are:হও/হয়,as:যেমন,at:এ,be:হওয়া,been:হয়েছে,but:কিন্তু,by:দ্বারা,can:পারা,could:পারতাম,did:করেছিলাম,do:করা,does:করে,each:প্রতিটি,else:অন্যথায়,every:প্রত্যেক,few:অল্প কয়েকটি,for:জন্য,from:থেকে,had:ছিল,has:আছে,have:আছে,he:সে (পুরুষ),her:তার (নারী),here:এখানে,him:তাকে,his:তার,how:কীভাবে,if:যদি,in:মধ্যে,into:ভিতরে,is:হয়,it:এটা,its:এর,just:শুধু,let:দেওয়া,like:পছন্দ করা,might:হতে পারে,more:আরও,most:সবচেয়ে বেশি,much:অনেক,must:অবশ্যই,my:আমার,no:না,not:না,of:এর,off:বন্ধ,on:উপরে,once:একবার,only:শুধুমাত্র,or:অথবা,other:অন্য,our:আমাদের,out:বাইরে,over:উপর দিয়ে,own:নিজের,same:একই,she:সে (নারী),should:উচিত,so:তাই,some:কিছু,such:এরকম,than:চেয়ে,that:ওটা,the:নির্দিষ্টবাচক শব্দ,their:তাদের,them:তাদের,then:তারপর,there:সেখানে,these:এইগুলো,they:তারা,this:এটা,those:ওইগুলো,to:প্রতি,too:ও,under:নিচে,until:পর্যন্ত,up:উপরে,us:আমাদের,very:খুব,was:ছিল,we:আমরা,were:ছিলাম,what:কী,when:কখন,where:কোথায়,which:কোনটি,while:যখন,who:কে,whom:কাকে,whose:কার,why:কেন,will:হবে,with:সাথে,would:হতো,yes:হ্যাঁ,you:তুমি,your:তোমার,i:আমি,me:আমাকে,act:কাজ করা,action:পদক্ষেপ,afternoon:বিকাল,ahead:সামনে,alike:একই রকম,along:বরাবর,among:মধ্যে,another:আরেকটি,anybody:যে কেউ,anyone:যে কেউ,anything:যেকোনো কিছু,anywhere:যেকোনো জায়গায়,apart:আলাদা,area:এলাকা,arm:বাহু,arrest:গ্রেপ্তার করা,art:শিল্প,aside:একপাশে,asleep:ঘুমন্ত,attempt:চেষ্টা,away:দূরে,backward:পিছনের দিকে,badly:খারাপভাবে,ball:বল,band:দল,base:ভিত্তি,basic:মৌলিক,bear:সহ্য করা,beauty:সৌন্দর্য,best:সেরা,better:আরও ভালো,bike:সাইকেল,blow:ফুঁ দেওয়া,board:বোর্ড,both:উভয়,breathe:শ্বাস নেওয়া,bunch:গুচ্ছ,button:বোতাম,cake:কেক,calm:শান্ত,camp:শিবির,cancel:বাতিল করা,card:কার্ড,care:যত্ন,case:ঘটনা,cash:নগদ টাকা,chalk:চক,choice:পছন্দ,church:গির্জা,clothes:কাপড়চোপড়,club:ক্লাব,coin:মুদ্রা,complain:অভিযোগ করা,concern:উদ্বেগ,cool:শীতল,corn:ভুট্টা,correct:সঠিক,cotton:তুলা,couple:জোড়া,course:পাঠক্রম,crash:সংঘর্ষ,cream:ক্রিম,cross:পার হওয়া,current:বর্তমান,daily:দৈনিক,deaf:বধির,deal:চুক্তি,death:মৃত্যু,decision:সিদ্ধান্ত,die:মারা যাওয়া,dig:খোঁড়া,dish:থালা,district:জেলা,doll:পুতুল,dollar:ডলার,donkey:গাধা,down:নিচে,dozen:ডজন,drag:টানা,drawer:দেরাজ,drop:ফোঁটা,drum:ঢোল,dust:ধুলো,eager:আগ্রহী,edge:কিনারা,either:যেকোনো একটি,elder:বয়োজ্যেষ্ঠ,error:ত্রুটি,even:এমনকি,ever:কখনো,exactly:ঠিক,except:ছাড়া,extra:অতিরিক্ত,fair:ন্যায্য,far:দূরে,feast:ভোজ,feather:পালক,fence:বেড়া,fine:ভালো,fist:মুষ্টি,flour:ময়দা,fold:ভাঁজ করা,fool:বোকা,forever:চিরকাল,fox:শিয়াল,fur:পশম,further:আরও দূরে,gas:গ্যাস,gather:জড়ো করা,giant:দানব,glove:দস্তানা,god:ঈশ্বর,grain:শস্য,grand:বিশাল,grave:কবর,gun:বন্দুক,hang:ঝোলানো,hardly:খুব কমই,hat:টুপি,hello:হ্যালো,hers:তার,herself:সে নিজে,himself:সে নিজে,hip:নিতম্ব,hole:গর্ত,hook:আঁকশি,horn:শিং,hut:কুঁড়েঘর,inch:ইঞ্চি,iron:লোহা,itself:নিজে,jar:বয়াম,jewel:রত্ন,joke:কৌতুক,kettle:কেটলি,knot:গিঁট,lay:শোয়ানো,lead:নেতৃত্ব দেওয়া,least:সর্বনিম্ন,less:কম,load:বোঝা,lord:প্রভু,mail:ডাক,mark:চিহ্ন,mass:ভর,mine:আমার,mill:কল,model:নমুনা,moreover:তাছাড়া,mouse:ইঁদুর,movie:সিনেমা,myself:আমি নিজে,nearby:কাছাকাছি,neither:কোনোটিই না,nest:বাসা,net:জাল,next:পরবর্তী,nor:না,nothing:কিছুই না,nowhere:কোথাও না,nut:বাদাম,ocean:মহাসাগর,onto:উপরে,ours:আমাদের,ourselves:আমরা নিজেরা,page:পাতা,palace:প্রাসাদ,pass:পাস করা,path:পথ,pearl:মুক্তা,plenty:প্রচুর,poem:কবিতা,pool:সুইমিংপুল,port:বন্দর,post:ডাক,pound:পাউন্ড,powder:গুঁড়া,prince:রাজকুমার,princess:রাজকন্যা,pump:পাম্প,punish:শাস্তি দেওয়া,pure:বিশুদ্ধ,queen:রানি,quite:বেশ,radio:রেডিও,rail:রেললাইন,raise:তোলা,rather:বরং,raw:কাঁচা,razor:ক্ষুর,remain:থাকা,rob:ডাকাতি করা,rock:পাথর,row:সারি,rubber:রাবার,rush:ছুটে যাওয়া,rust:মরিচা,sack:বস্তা,sail:পাল তোলা,sale:বিক্রয়,scale:দাঁড়িপাল্লা,seek:খোঁজা,seem:মনে হওয়া,several:কয়েকটি,shame:লজ্জা,shelter:আশ্রয়,shock:ধাক্কা,shoot:গুলি করা,shower:গোসল,sleeve:আস্তিন,slip:পিছলানো,smart:চালাক,somebody:কেউ,someone:কেউ,something:কিছু,sometimes:মাঝে মাঝে,somewhere:কোথাও,sort:ধরন,speech:বক্তৃতা,spoil:নষ্ট করা,spread:ছড়িয়ে পড়া,spring:বসন্ত,square:বর্গ,steam:বাষ্প,steel:ইস্পাত,stick:লাঠি,stitch:সেলাই,strange:অদ্ভুত,stream:স্রোত,strike:আঘাত করা,string:সুতো,sunny:রৌদ্রোজ্জ্বল,swing:দোলনা,tale:গল্প,tank:ট্যাঙ্ক,tear:অশ্রু,tent:তাঁবু,tie:বাঁধা,title:শিরোনাম,tonight:আজ রাতে,top:শীর্ষ,toward:দিকে,toy:খেলনা,trap:ফাঁদ,tray:ট্রে,tube:নল,twice:দুইবার,unless:যদি না,upon:উপরে,upper:উপরের,useful:দরকারি,useless:অকেজো,vessel:পাত্র,wage:মজুরি,wagon:গাড়ি,whatever:যা কিছু,wheat:গম,wheel:চাকা,whenever:যখনই,wherever:যেখানেই,whether:কিনা,whole:সম্পূর্ণ,wing:ডানা,wire:তার,within:ভিতরে,wool:উল,yard:উঠান,yet:এখনও,yourself:তুমি নিজে,adopt:গ্রহণ করা,bless:আশীর্বাদ করা,bury:কবর দেওয়া,chase:তাড়া করা,cheer:উল্লাস করা,clap:হাততালি দেওয়া,command:আদেশ দেওয়া,crush:পিষে ফেলা,dare:সাহস করা,deceive:প্রতারণা করা,dip:ডোবানো,drown:ডুবে যাওয়া,fetch:নিয়ে আসা,float:ভাসা,freeze:জমে যাওয়া,grab:ধরা,grind:পেষা,hire:ভাড়া করা,hop:লাফানো,insult:অপমান করা,lick:চাটা,melt:গলে যাওয়া,mend:মেরামত করা,nod:মাথা নাড়ানো,pinch:চিমটি কাটা,polish:পালিশ করা,print:ছাপা,quarrel:ঝগড়া করা,rub:ঘষা,scratch:আঁচড়ানো,shut:বন্ধ করা,sink:ডুবে যাওয়া,smash:ভাঙা,soak:ভেজানো,split:ভাগ করা,squeeze:চেপে ধরা,stare:তাকিয়ে থাকা,tease:খ্যাপানো,tremble:কাঁপা,twist:মোচড়ানো,wipe:মোছা`.split(',').map(x=>{const[w,b]=x.split(':');return{w,b}});
+const _s=new Set(),ALL=[...DAILY,...EXTRA,...MORE,...MORE2,...MORE3,...MORE4].filter(x=>!_s.has(x.w)&&_s.add(x.w)),POOL=ALL.slice(DAILY.length),DICT=[...ALL].sort((a,b)=>a.w.localeCompare(b.w));
+const mk=t=>t.split('\n').map(l=>{const[e,b,t2]=l.split('|');return{e,b,t:t2}});
+const SENT=mk(`I am learning English.|আমি ইংরেজি শিখছি।|Present Continuous — am + verb-ing (learning)। এখন যা চলছে।
+She goes to school every day.|সে প্রতিদিন স্কুলে যায়।|Simple Present — he/she/it এর সাথে verb-এ s/es (goes)। নিয়মিত অভ্যাস।
+I ate rice yesterday.|আমি গতকাল ভাত খেয়েছি।|Simple Past — eat এর past form ate। শেষ হয়ে যাওয়া কাজ।
+We will go to the market tomorrow.|আমরা আগামীকাল বাজারে যাব।|Simple Future — will + verb (go)।
+He has finished his work.|সে তার কাজ শেষ করেছে।|Present Perfect — has/have + V3 (finished)।
+They were playing football.|তারা ফুটবল খেলছিল।|Past Continuous — was/were + verb-ing (playing)।
+I have lived here for five years.|আমি পাঁচ বছর ধরে এখানে আছি।|Present Perfect — for + সময়ের পরিমাণ।
+Where do you live?|তুমি কোথায় থাকো?|Simple Present Question — do/does + subject + verb।
+What time is it?|এখন কয়টা বাজে?|Simple Present — to be (is)।
+Can you help me, please?|তুমি কি আমাকে সাহায্য করতে পারো?|Modal — can + verb (help)। সামর্থ্য/অনুরোধ।
+I don't understand.|আমি বুঝতে পারছি না।|Simple Present Negative — do not + verb।
+How much is this?|এটার দাম কত?|Simple Present — is।
+I am going to call my mother.|আমি আমার মাকে ফোন করতে যাচ্ছি।|Near Future — am going to + verb।
+She was sleeping when I called.|আমি ফোন করার সময় সে ঘুমাচ্ছিল।|Past Continuous + Simple Past।
+Please speak slowly.|দয়া করে আস্তে বলুন।|Imperative — আদেশ/অনুরোধ, subject ছাড়া।
+I have never seen the sea.|আমি কখনো সমুদ্র দেখিনি।|Present Perfect — never + have + V3 (seen)।
+Have you eaten yet?|তুমি কি খেয়েছ?|Present Perfect Question — Have + subject + V3।
+It is raining outside.|বাইরে বৃষ্টি হচ্ছে।|Present Continuous — is + verb-ing।
+I will call you later.|আমি পরে তোমাকে ফোন করব।|Simple Future — will + verb।
+He didn't come yesterday.|সে গতকাল আসেনি।|Simple Past Negative — did not + V1 (come)।
+Nice to meet you.|আপনার সাথে দেখা হয়ে ভালো লাগলো।|Greeting — ছোট বাক্যাংশ, tense নেই।
+I am from Bangladesh.|আমি বাংলাদেশ থেকে এসেছি।|Simple Present — am (to be)।
+I would like a cup of tea.|আমি এক কাপ চা চাই।|Polite request — would like।
+Could you repeat that?|আপনি কি আবার বলবেন?|Modal (polite) — could + verb।`);
+const HARD=mk(`Although it was raining, we decided to go out.|বৃষ্টি হলেও আমরা বাইরে যাওয়ার সিদ্ধান্ত নিলাম।|Simple Past + although (বিরোধ বোঝায়)।
+If I had known, I would have helped you.|আমি জানলে তোমাকে সাহায্য করতাম।|Third Conditional — If + Past Perfect, would have + V3।
+She has been working here since 2020.|সে ২০২০ সাল থেকে এখানে কাজ করছে।|Present Perfect Continuous — has been + verb-ing।
+I wish I could speak English fluently.|আমি যদি সাবলীল ইংরেজি বলতে পারতাম।|Wish + could — অবাস্তব ইচ্ছা।
+By the time you arrive, I will have finished.|তুমি পৌঁছানোর আগে আমি শেষ করে ফেলব।|Future Perfect — will have + V3।
+The book that I borrowed was fascinating.|আমি যে বইটি ধার নিয়েছিলাম তা অসাধারণ ছিল।|Relative clause — that দিয়ে বইটির পরিচয়।
+He suggested that we leave early.|সে প্রস্তাব দিল আমরা যেন তাড়াতাড়ি বের হই।|Subjunctive — suggest that + verb (base form)।
+It is essential to practice every day.|প্রতিদিন অনুশীলন করা অত্যন্ত জরুরি।|It is + adjective + to + verb।
+Not only did he come, but he also helped us.|সে শুধু আসেইনি, আমাদের সাহায্যও করেছে।|Inversion — Not only did + subject + V1।
+I am used to waking up early.|আমি ভোরে ঘুম থেকে উঠতে অভ্যস্ত।|be used to + verb-ing।
+The meeting has been postponed until Monday.|সভাটি সোমবার পর্যন্ত স্থগিত করা হয়েছে।|Present Perfect Passive — has been + V3।
+Had I studied harder, I would have passed.|আরও পড়লে আমি পাস করতাম।|Inverted conditional — Had + subject + V3।`);
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+window.sp=speak;
+let AC={};try{AC=JSON.parse(localStorage.getItem('eng-ai')||'{}')}catch(e){}
+function aiBox(v,n){const c=AC[v];return `<div class="card" style="border-color:#8ff0d0"><div class="row"><div><b>🤖 “${esc(v)}” – যেকোনো ইংরেজি শব্দের অর্থ</b><div class="small">${n?'তালিকায় '+n+'টি মিল পাওয়া গেছে। ':'তালিকায় নেই। '}যেকোনো শব্দের অর্থ AI থেকে নিন।</div></div><button class="ib" onclick="sp('${esc(v)}')">🔊</button></div><button class="btn" onclick="aiLook('${esc(v)}')">অর্থ খুঁজুন 🔎</button><div id="aio" class="tense" style="${c?'':'display:none;'}white-space:pre-wrap">${c?esc(c):''}</div></div>`}
+window.aiLook=async v=>{const o=$('#aio');o.style.display='block';if(AC[v]){o.textContent=AC[v];return}o.textContent='খুঁজছি…';
+ try{const sm=await claude.use('sample');if(!sm){o.textContent='AI এখানে চালু নেই।';return}
+  const r=await sm(`ইংরেজি শব্দ/বাক্যাংশ: "${v}". একজন বাংলাভাষী শিক্ষার্থীর জন্য বাংলায় লেখো (সংক্ষেপে): ১) বাংলা অর্থ (একাধিক হলে ২-৩টি) ২) Part of speech ৩) ছোট একটি ইংরেজি উদাহরণ বাক্য ও তার বাংলা অনুবাদ। শব্দটি ভুল বানান হলে সঠিক বানান বলো।`,{cache:true});
+  AC[v]=r.text;try{localStorage.setItem('eng-ai',JSON.stringify(AC))}catch(e){}o.textContent=r.text}catch(e){o.textContent='AI সংযোগ হয়নি, আবার চেষ্টা করুন।'}};
+let K={b:0,ids:[]};try{const s=JSON.parse(localStorage.getItem('eng-k2')||'null');if(s)K=s}catch(e){}
+const save=()=>{try{localStorage.setItem('eng-k2',JSON.stringify(K))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TABS=[['dict','📖','Dictionary','অভিধান – শব্দ খুঁজুন, উচ্চারণ শুনুন'],['daily','🌟','Daily Words','প্রতিদিনের ৫০ শব্দের টাস্ক'],['quiz','🧠','Quiz','কুইজ খেলে শিখুন'],['sent','💬','Daily Sentences','দৈনন্দিন বাক্য ও Tense'],['hard','🔥','Hard Sentences','কঠিন কিন্তু কাজের বাক্য'],['speak','🎙️','Speaking','বলে বলে অনুশীলন করুন']];
+let cur='home';
+window.go=t=>{cur=t;render()};
+function confetti(){const em=['🎉','✨','🎊','⭐','💖','🌟'];for(let i=0;i<70;i++){const d=document.createElement('div');d.className='cf';d.textContent=em[i%6];d.style.left=Math.random()*100+'vw';d.style.animationDuration=2+Math.random()*3+'s';d.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),6500)}}
+let S={};try{S=JSON.parse(localStorage.getItem('eng-st')||'{}')}catch(e){}
+const dk=(o=0)=>new Date(Date.now()-o*864e5).toISOString().slice(0,10);
+function rHome(){
+ const W=BATCH(K.b),p=Math.min(1,K.ids.length/W.length),tot=K.b*50+K.ids.length,wk=[6,5,4,3,2,1,0].map(o=>({k:dk(o),n:S[dk(o)]||0,d:['রবি','সোম','মঙ্গল','বুধ','বৃহ','শুক্র','শনি'][new Date(Date.now()-o*864e5).getDay()]})),mx=Math.max(5,...wk.map(x=>x.n));
+ $('#app').innerHTML=`<div class="card"><div class="stats"><div class="ring"><svg width="84" height="84"><defs><linearGradient id="rg"><stop offset="0" stop-color="#8ff0d0"/><stop offset="1" stop-color="#1e88e5"/></linearGradient></defs><circle cx="42" cy="42" r="34" stroke="#ffffff22"/><circle class="r2" cx="42" cy="42" r="34" style="stroke-dashoffset:${213.6*(1-p)}"/></svg><span>${Math.round(p*100)}%</span></div><div class="nums"><div><b>${tot}</b><small>শেখা শব্দ</small></div><div><b>${K.b}</b><small>টাস্ক শেষ</small></div><div><b>${Q.n?Math.round(Q.s/Q.n*100)+'%':'–'}</b><small>কুইজ স্কোর</small></div></div></div>
+ <div class="small" style="margin-top:10px">মোট অগ্রগতি: ${tot} / ${DICT.length} শব্দ</div><div class="bar"><b style="width:${Math.min(100,tot/DICT.length*100)}%"></b></div>
+ <div class="small">📈 গত ৭ দিনে নতুন শেখা শব্দ</div><div class="bars">${wk.map((x,i)=>`<div><em>${x.n||''}</em><i style="height:${Math.max(4,x.n/mx*80)}px;animation-delay:${i*.1}s"></i><span>${x.d}</span></div>`).join('')}</div></div>
+ <div class="grid">`+TABS.map(t=>`<div class="tile" onclick="go('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div></div>`).join('')+'</div>'}
+function render(keep){
+ $('#app').className=['dict','daily'].includes(cur)?'noanim':'';
+ if(cur==='home')rHome();else{({dict:rDict,daily:rDaily,quiz:rQuiz,sent:()=>rSent(SENT),hard:()=>rSent(HARD),speak:rSpeak})[cur]();
+  const T=TABS.find(x=>x[0]===cur);$('#app').insertAdjacentHTML('afterbegin',`<div class="row" style="margin:6px 0 4px"><button class="btn alt" onclick="go('home')">⬅️ হোম</button><b>${T[1]} ${T[2]}</b></div>`)}
+ if(!keep)window.scrollTo({top:0,behavior:'smooth'});
+}
+function wcard(x,i,extra=''){return `<div class="card" style="animation-delay:${Math.min(i,12)*.03}s"><div class="row"><div><div class="en">${esc(x.w)}</div><div class="bn">${esc(x.b)}</div>${x.s?`<div class="ex">${esc(x.s)}</div>`:''}</div><div style="display:flex;gap:6px"><button class="ib" onclick="sp('${esc(x.w)}')">🔊</button>${x.s?`<button class="ib" title="sentence" onclick="sp('${esc(x.s)}')">🗣️</button>`:''}</div></div>${extra}</div>`}
+let LIM=60;
+function shown(r){return r.slice(0,LIM).map(x=>wcard(x,0)).join('')+(r.length>LIM?`<button class="btn" onclick="showMore()">আরও দেখুন (${r.length-LIM}টি বাকি) ⬇️</button>`:'')}
+function rDict(){
+ $('#app').innerHTML=`<div class="card"><input id="q" placeholder="🔍 শব্দ খুঁজুন (English বা বাংলা)…"><div class="small" style="margin-top:6px">মোট ${DICT.length}টি শব্দ • 🔊 চাপলে উচ্চারণ শুনবেন</div></div><div id="l"></div>`;
+ const L=v=>{v=v.trim().toLowerCase();const r=DICT.filter(x=>!v||x.w.includes(v)||x.b.includes(v));$('#l').innerHTML=(r.length?shown(r):'<div class="card">শব্দটি তালিকায় নেই 🙈 অন্য বানানে চেষ্টা করুন।</div>')};
+ $('#q').oninput=e=>{LIM=60;L(e.target.value)};window.showMore=()=>{LIM+=100;L($('#q').value)};L('');
+}
+const NB=1+Math.ceil(POOL.length/50),BATCH=b=>{b%=NB;return b?POOL.slice((b-1)*50,b*50):DAILY};
+function rDaily(){
+ const W=BATCH(K.b),n=K.ids.length,done=n>=W.length;
+ $('#app').innerHTML=`<div class="card" id="tc"><b id="tk">টাস্ক ${K.b+1} : ${n}/${W.length}</b><div class="bar"><b id="tb" style="width:${n/W.length*100}%"></b></div><div class="small">প্রতিটি শব্দ শুনুন, পড়ুন, তারপর “জানি ✅” চাপুন। সব শেষ হলে সারপ্রাইজ! 🎁</div>${done?'<button class="btn" onclick="nextTask()">🚀 নতুন টাস্ক – আরও নতুন শব্দ</button>':''}</div>`+
+ W.map((x,i)=>wcard(x,i,`<button class="btn ${K.ids.includes(i)?'done':''}" onclick="know(${i},this)">${K.ids.includes(i)?'✅ জানি':'জানি ✅'}</button>`)).join('');
+}
+window.know=(i,el)=>{if(K.ids.includes(i))return;K.ids.push(i);S[dk()]=(S[dk()]||0)+1;try{localStorage.setItem('eng-st',JSON.stringify(S))}catch(e){}save();el.classList.add('done');el.textContent='✅ জানি';const L=BATCH(K.b).length,n=K.ids.length;$('#tk').textContent=`টাস্ক ${K.b+1} : ${n}/${L}`;$('#tb').style.width=n/L*100+'%';if(n===L){$('#tc').insertAdjacentHTML('beforeend','<button class="btn" onclick="nextTask()">🚀 নতুন টাস্ক – আরও নতুন শব্দ</button>');cel.style.display='flex';confetti()}};
+window.nextTask=()=>{K.b++;K.ids=[];save();cel.style.display='none';go('daily')};
+let Q={s:0,n:0,mode:null};
+window.setQ=m=>{Q.mode=m;render()};
+const QS=`She goes to school every day.|She go to school every day.|She going to school every day.|She gone to school every day.|✅ he/she/it এর সাথে Simple Present এ verb এ s/es বসে (goes)।/❌ She go – তৃতীয় পুরুষ একবচনে s/es লাগে।/❌ She going – is/was ছাড়া -ing চলে না।/❌ She gone – has ছাড়া V3 (gone) বসে না।
+I saw him yesterday.|I have seen him yesterday.|I see him yesterday.|I seeing him yesterday.|✅ yesterday নির্দিষ্ট অতীত সময়, তাই Simple Past (saw)।/❌ have seen – নির্দিষ্ট অতীত সময়ের সাথে Present Perfect হয় না।/❌ see – এটা present form।/❌ seeing – আগে was/am লাগে।
+He doesn't like tea.|He don't like tea.|He doesn't likes tea.|He not like tea.|✅ doesn't এর পরে verb এর মূল রূপ (like) বসে।/❌ don't – he এর সাথে doesn't হয়।/❌ likes – doesn't এর পরে s লাগে না।/❌ not like – not এর আগে do/does লাগে।
+There are many books on the table.|There is many books on the table.|There are much books on the table.|There have many books on the table.|✅ plural noun (books) এর সাথে are, আর গণনাযোগ্য noun এর সাথে many।/❌ is – একবচন, books বহুবচন।/❌ much – অগণনীয় noun এর সাথে বসে।/❌ There have – “আছে” বোঝাতে there are/is হয়।
+If it rains, I will stay home.|If it will rain, I will stay home.|If it rained, I will stay home.|If it rain, I will stay home.|✅ If-clause এ Simple Present (rains), main clause এ will + verb।/❌ will rain – if-clause এ will বসে না।/❌ rained – সময়ের মিল নেই (past + will)।/❌ rain – it এর সাথে rains হয়।
+I am looking forward to meeting you.|I am looking forward to meet you.|I am look forward to meeting you.|I looking forward to meeting you.|✅ look forward to + verb-ing (to এখানে preposition)।/❌ to meet – to এর পর -ing লাগে।/❌ am look – am এর সাথে looking লাগে।/❌ I looking – am ছাড়া চলে না।
+She is taller than me.|She is more taller than me.|She is tallest than me.|She is tall than me.|✅ ছোট adjective এর সাথে -er (taller) + than।/❌ more taller – দুইবার তুলনা হয়ে যায়।/❌ tallest – সবার মধ্যে সেরা বোঝায়, than এর সাথে নয়।/❌ tall – তুলনায় -er লাগে।
+I have been waiting for two hours.|I am waiting since two hours.|I waiting for two hours.|I have wait for two hours.|✅ কিছু সময় ধরে চলছে বোঝাতে Present Perfect Continuous (have been + -ing)।/❌ am waiting since – since এর সাথে নির্দিষ্ট সময়বিন্দু, “two hours” এর সাথে for।/❌ I waiting – am/have been লাগে।/❌ have wait – have been waiting হবে।
+Do you know where he lives?|Do you know where does he live?|Do you know where he live?|Do you knows where he lives?|✅ প্রশ্নের ভেতরের অংশে সাধারণ বাক্যের ক্রম (where he lives)।/❌ where does he live – does লাগে না।/❌ he live – he এর সাথে lives।/❌ Do you knows – Do এর পরে know।
+She told me that she was tired.|She said me that she was tired.|She told that she was tired.|She say me she tired.|✅ tell এর পর কাকে বলা (me) বসে।/❌ said me – say এর পর সরাসরি me বসে না (said to me)।/❌ told that – tell এর পর ব্যক্তি লাগে।/❌ say me she tired – verb ও was দুটোই ভুল।
+I wish I were rich.|I wish I am rich.|I wish I will rich.|I wish I be rich.|✅ অবাস্তব ইচ্ছায় wish এর পরে past form (were)।/❌ am – বাস্তব বর্তমান, ইচ্ছা নয়।/❌ will rich – will এর পর verb লাগে, শুধু adjective নয়।/❌ be – wish এর পরে এমন রূপ হয় না।
+The news is good.|The news are good.|The news were good.|The news be good.|✅ news অগণনীয়, তাই একবচন verb (is)।/❌ are/were – plural verb, news plural নয়।/❌ be – সাধারণ বাক্যে is/are লাগে।`.split('\n').map(l=>{const a=l.split('|');return{o:a.slice(0,4),e:a[4]}});
+window.genQ=async()=>{const b=$('#gq');b.textContent='তৈরি হচ্ছে…';try{const sm=await claude.use('sample');if(!sm){b.textContent='AI চালু নেই';return}const r=await sm('Create 8 English grammar items for Bengali learners. Each line: CORRECT sentence|WRONG sentence 1|WRONG sentence 2|WRONG sentence 3|Bangla explanation of why correct is right and each wrong one is wrong, parts separated by / . Output only 8 lines, no numbering.',{cache:false});const n=r.text.split('\n').map(l=>l.split('|')).filter(a=>a.length==5).map(a=>({o:a.slice(0,4),e:a[4]}));QS.push(...n);b.textContent=n.length+'টি নতুন প্রশ্ন যোগ হলো ✅'}catch(e){b.textContent='আবার চেষ্টা করুন'}};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+function rQuiz(){
+ const A=$('#app');
+ if(!Q.mode){A.innerHTML=`<div class="grid">${[['mcq','🔤','অর্থ বাছাই','শব্দের সঠিক বাংলা অর্থ'],['sc','✅','সঠিক বাক্য','৪টি বাক্য থেকে সঠিকটি + ভুলের ব্যাখ্যা']].map((t,i)=>`<div class="tile" style="animation-delay:${i*.07}s" onclick="setQ('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div></div>`).join('')}</div>`;return}
+ A.innerHTML=`<div class="card row"><button class="btn alt" onclick="setQ(null)">⬅️ কুইজ মেনু</button><span>স্কোর ${Q.s}/${Q.n}</span></div><div id="qb"></div>`;
+ const B=$('#qb'),w=rnd(DICT);
+ if(Q.mode=='mcq'){
+  const o=[w];while(o.length<4){const r=rnd(DICT);if(!o.includes(r))o.push(r)}o.sort(()=>Math.random()-.5);
+  B.innerHTML=`<div class="card"><div class="row"><div class="en">“${w.w}” এর বাংলা কী?</div><button class="ib" onclick="sp('${w.w}')">🔊</button></div>${o.map(x=>`<button class="opt" data-ok="${x===w?1:0}">${x.b}</button>`).join('')}</div>`;
+  B.onclick=e=>{if(!e.target.classList.contains('opt')||e.target.dataset.done)return;const ok=e.target.dataset.ok==1;Q.n++;if(ok)Q.s++;e.target.classList.add(ok?'ok':'no');B.querySelectorAll('.opt').forEach(b=>{b.dataset.done=1;if(b.dataset.ok==1)b.classList.add('ok')});B.insertAdjacentHTML('beforeend',`<button class="btn" onclick="render()">পরের প্রশ্ন ➡️</button>`)}
+ }else if(Q.mode=='sc'){
+  const q=rnd(QS),o=q.o.map((t,i)=>({t,ok:i==0})).sort(()=>Math.random()-.5);
+  B.innerHTML=`<div class="card"><div class="en">কোন বাক্যটি সঠিক?</div>${o.map(x=>`<button class="opt" data-ok="${x.ok?1:0}">${esc(x.t)}</button>`).join('')}</div><div id="ex"></div>`;
+  B.onclick=e=>{if(!e.target.classList.contains('opt')||e.target.dataset.done)return;const ok=e.target.dataset.ok==1;Q.n++;if(ok)Q.s++;e.target.classList.add(ok?'ok':'no');B.querySelectorAll('.opt').forEach(b=>{b.dataset.done=1;if(b.dataset.ok==1)b.classList.add('ok')});$('#ex').innerHTML=`<div class="card"><b>${ok?'সঠিক! 🎉':'ভুল হয়েছে 😅 – কেন?'}</b><div class="tense">${q.e.split('/').map(esc).join('<br>')}</div><button class="btn" onclick="render()">পরের প্রশ্ন ➡️</button></div>`}
+ }else{
+  B.innerHTML=`<div class="card"><div class="en">“${w.w}” (${w.b}) দিয়ে একটি ইংরেজি বাক্য লিখুন</div><textarea id="ans" rows="2" placeholder="Write your sentence…"></textarea><button class="btn" id="ck">AI দিয়ে চেক করো ✔️</button><button class="btn alt" onclick="render()">অন্য শব্দ</button><div id="fb" class="tense" style="display:none;white-space:pre-wrap"></div></div>`;
+  $('#ck').onclick=async()=>{const a=$('#ans').value.trim();if(!a)return;const f=$('#fb');f.style.display='block';f.textContent='চেক করছি…';
+   try{const sm=await claude.use('sample');if(!sm){f.textContent='AI এখানে চালু নেই।';return}
+    const r=await sm(`একজন বাংলাভাষী ইংরেজি শিখছে। শব্দ: "${w.w}". তার বাক্য: "${a}". বাংলায় ছোট করে বলো: বাক্যটি ঠিক কিনা, ভুল থাকলে কেন ভুল ও সংশোধিত বাক্য, আর একটি ভালো উদাহরণ।`,{cache:false});f.textContent=r.text;Q.n++}catch(e){f.textContent='AI সংযোগ হয়নি, আবার চেষ্টা করুন।'}}
+ }
+}
+function rSent(A){
+ $('#app').innerHTML=(A===HARD?'<div class="card">🔥 কঠিন কিন্তু কাজের বাক্য – দেখে দেখে শুনে শুনে শিখুন।</div>':'<div class="card">💬 প্রতিদিনের বাক্য – “Tense” বাটনে বিস্তারিত দেখুন।</div>')+
+ A.map((x,i)=>`<div class="card" style="animation-delay:${Math.min(i,12)*.03}s"><div class="row"><div><div class="en">${esc(x.e)}</div><div class="bn">${esc(x.b)}</div></div><button class="ib" onclick="sp(this.dataset.t)" data-t="${esc(x.e)}">🔊</button></div><button class="btn alt" onclick="var d=this.nextElementSibling;d.style.display=d.style.display=='block'?'none':'block'">📚 Tense</button><div class="tense" style="display:none">${esc(x.t)}</div></div>`).join('');
+}
+
+let SP=0;
+function rSpeak(){
+ const s=SENT[SP%SENT.length];
+ $('#app').innerHTML=`<div class="card"><div class="small">১) 🔊 শুনুন  ২) 🎤 চেপে বাক্যটি জোরে বলুন  ৩) স্কোর দেখুন</div><div class="en" style="margin-top:10px">${esc(s.e)}</div><div class="bn">${esc(s.b)}</div><button class="btn alt" onclick="sp(SENT[SP%SENT.length].e)">🔊 শুনুন</button><button class="btn" id="sm">🎤 বলুন</button><button class="btn alt" onclick="SP++;rSpeak()">পরের বাক্য ➡️</button><div id="sr" class="tense" style="display:none"></div></div>`;
+ $('#sm').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition,o=$('#sr');o.style.display='block';if(!SR){o.textContent='এই ব্রাউজারে ভয়েস ইনপুট নেই। Chrome ব্যবহার করুন।';return}
+  const r=new SR();r.lang='en-US';o.textContent='শুনছি… 🎧';
+  r.onresult=e=>{const h=e.results[0][0].transcript.toLowerCase().replace(/[^a-z' ]/g,'').split(/\s+/),w=s.e.toLowerCase().replace(/[^a-z' ]/g,'').split(/\s+/),m=w.filter(x=>h.includes(x)).length,p=Math.round(m/w.length*100);o.innerHTML=`আপনি বলেছেন: “${esc(e.results[0][0].transcript)}”<br><b>${p}% মিলেছে ${p>=80?'🎉 দারুণ!':p>=50?'👍 ভালো, আবার চেষ্টা করুন':'💪 আবার শুনে বলুন'}</b>`};
+  r.onerror=()=>{o.textContent='শুনতে পারিনি, আবার চেষ্টা করুন।'};try{r.start()}catch(e){}}
+}
+let H=[],rec=null;
+function rAI(){
+ $('#app').innerHTML=`<div class="card"><b>🎙️ AI Teacher</b><div class="small">মাইক চাপুন ও ইংরেজিতে বলুন। AI ইংরেজিতে উত্তর দেবে (সাথে বাংলা সাহায্য)। মাইক না চললে নিচে টাইপ করুন।</div></div><div class="card chat" id="ch"></div><button class="mic" id="mic">🎤</button><div class="card"><input id="ti" placeholder="অথবা এখানে লিখুন…"><button class="btn" id="sd">Send</button></div>`;
+ draw();
+ $('#sd').onclick=()=>{const v=$('#ti').value.trim();if(v){$('#ti').value='';send(v)}};
+ $('#ti').onkeydown=e=>{if(e.key==='Enter')$('#sd').click()};
+ $('#mic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('এই ব্রাউজারে ভয়েস ইনপুট নেই, টাইপ করুন।');return}
+  if(rec){rec.stop();return}rec=new SR();rec.lang='en-US';rec.onstart=()=>$('#mic').classList.add('rec');
+  rec.onresult=e=>send(e.results[0][0].transcript);rec.onerror=()=>{};rec.onend=()=>{rec=null;$('#mic')&&$('#mic').classList.remove('rec')};try{rec.start()}catch(e){rec=null}};
+}
+function draw(){const c=$('#ch');if(!c)return;c.innerHTML=H.length?H.map(m=>`<div class="m ${m.role=='user'?'u':'a'}">${esc(m.content)}</div>`).join(''):'<div class="small">Say “Hello!” to start 👋</div>';c.scrollTop=c.scrollHeight}
+async function send(t){
+ H.push({role:'user',content:t});draw();
+ try{const sm=await claude.use('sample');if(!sm){H.push({role:'assistant',content:'AI is not available here.'});draw();return}
+  const turns=H.map((m,i)=>i===0?{role:'user',content:"You are a friendly English speaking tutor for a Bengali beginner. Reply in simple English, max 2 short sentences, then ask one easy follow-up question. If their English has a mistake, gently show the corrected sentence and add one short Bangla hint. Their message: "+m.content}:m);
+  H.push({role:'assistant',content:'…'});draw();
+  const r=await sm(turns.slice(0,-1),{cache:false,onText:({text})=>{H[H.length-1].content=text;draw()}});
+  H[H.length-1].content=r.text;draw();speak(r.text.split(/[\u0980-\u09FF]/)[0])}
+ catch(e){H[H.length-1]={role:'assistant',content:'Connection problem, try again.'};draw()}
+}
+render();
+if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script></body></html>

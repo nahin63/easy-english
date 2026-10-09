@@ -72,6 +72,15 @@ button,.tile,.opt,.chip{touch-action:manipulation}
 .tile .ti{animation:none}.tile:hover .ti{animation:bn 1s ease-in-out}
 @media(max-width:700px){.bg i{animation:none}.logo{animation:none}}
 html{-webkit-text-size-adjust:100%}
+.tile .ti{animation:bn 2.6s ease-in-out infinite}
+.tile:nth-child(2n) .ti{animation-delay:-.8s}.tile:nth-child(3n) .ti{animation-delay:-1.6s}.tile:nth-child(5n) .ti{animation-delay:-2.2s}
+.tile::after{display:block}
+.logo{animation:bn 3.2s ease-in-out infinite!important}
+.hi{display:inline-block;animation:bn 2.6s ease-in-out infinite}
+.btn{transition:transform .15s,filter .2s}.btn:active{transform:scale(.93)}.btn:not(.alt):hover{filter:brightness(1.12)}
+.ib:active{transform:scale(.88)}
+#off{margin-top:4px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style></head><body>
 <div class="bg"><i></i><i></i><i></i></div>
 <header><svg class="logo" viewBox="0 0 64 64" width="72" height="72"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff0d0"/><stop offset="1" stop-color="#1e88e5"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="18" fill="url(#lg)"/><path d="M13 24c7-3.500 13-3 19 1v21c-6-4-12-4.500-19-1z" fill="#fff"/><path d="M51 24c-7-3.500-13-3-19 1v21c6-4 12-4.500 19-1z" fill="#fff" opacity=".78"/><path d="M32 25v21" stroke="#1e88e5" stroke-width="1.500"/><circle cx="46" cy="15" r="8" fill="#ffd54f"/><text x="46" y="19" font-size="11" font-weight="800" text-anchor="middle" fill="#064e5a" font-family="system-ui">A</text></svg><h1>Easy English</h1><div class="sub">সহজে ইংরেজি শিখুন – প্রতিদিন একটু একটু করে</div></header>
@@ -574,7 +583,7 @@ function rHome(){
 function render(keep){
  $('#app').className=['dict','daily','hw','sent','hard'].includes(cur)?'noanim':'';
  if(cur==='home')rHome();else{({dict:rDict,daily:rDaily,hw:rHW,tr:rTR,quiz:rQuiz,sent:()=>rSent(SENT),hard:()=>rSent(HARD),ai:rAI})[cur]();
-  const T=TABS.find(x=>x[0]===cur);$('#app').insertAdjacentHTML('afterbegin',`<div class="row" style="margin:6px 0 4px"><button class="btn alt" onclick="go('home')">⬅️ হোম</button><b>${T[1]} ${T[2]}</b></div>`)}
+  const T=TABS.find(x=>x[0]===cur);$('#app').insertAdjacentHTML('afterbegin',`<div class="row" style="margin:6px 0 4px"><button class="btn alt" onclick="go('home')">⬅️ হোম</button><b><span class="hi">${T[1]}</span> ${T[2]}</b></div>`)}
  if(!keep)window.scrollTo(0,0);
 }
 function wcard(x,i,extra=''){return `<div class="card" style="animation-delay:${Math.min(i,12)*.03}s"><div class="row"><div><div class="en">${esc(x.w)}</div><div class="bn">${esc(x.b)}</div>${x.s?`<div class="ex">${esc(x.s)}</div>`:''}</div><div style="display:flex;gap:6px"><button class="ib" onclick="sp('${esc(x.w)}')">🔊</button>${x.s?`<button class="ib" title="sentence" onclick="sp('${esc(x.s)}')">🗣️</button>`:''}</div></div>${extra}</div>`}

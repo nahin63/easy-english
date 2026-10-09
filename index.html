@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Easy English – সহজ ইংরেজি</title>
+<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#064e5a"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Easy English"><title>Easy English – সহজ ইংরেজি</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
@@ -81,9 +81,13 @@ html{-webkit-text-size-adjust:100%}
 .ib:active{transform:scale(.88)}
 #off{margin-top:4px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.lt{width:42px;height:42px;margin:4px;border-radius:12px;border:1px solid #ffffff40;background:#ffffff1c;color:#fff;font-size:18px;font-weight:700;cursor:pointer}.lt:disabled{opacity:.3}
+.big{font-size:28px;letter-spacing:4px;margin:10px 0;font-weight:800;word-break:break-all}.mt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt.sel{outline:2px solid #8ff0d0;background:#12c4a033}.opt:disabled{opacity:.9}.slotbox{min-height:48px;padding:8px;border:2px dashed #ffffff40;border-radius:12px;margin:8px 0}
+button.chip{border:0;color:#fff;font-size:15px}button.chip:disabled{opacity:.3}
 </style></head><body>
 <div class="bg"><i></i><i></i><i></i></div>
-<header><svg class="logo" viewBox="0 0 64 64" width="72" height="72"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff0d0"/><stop offset="1" stop-color="#1e88e5"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="18" fill="url(#lg)"/><path d="M13 24c7-3.500 13-3 19 1v21c-6-4-12-4.500-19-1z" fill="#fff"/><path d="M51 24c-7-3.500-13-3-19 1v21c6-4 12-4.500 19-1z" fill="#fff" opacity=".78"/><path d="M32 25v21" stroke="#1e88e5" stroke-width="1.500"/><circle cx="46" cy="15" r="8" fill="#ffd54f"/><text x="46" y="19" font-size="11" font-weight="800" text-anchor="middle" fill="#064e5a" font-family="system-ui">A</text></svg><h1>Easy English</h1><div class="sub">সহজে ইংরেজি শিখুন – প্রতিদিন একটু একটু করে</div></header>
+<header><svg class="logo" viewBox="0 0 64 64" width="72" height="72"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ff0d0"/><stop offset="1" stop-color="#1e88e5"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="18" fill="url(#lg)"/><path d="M13 24c7-3.500 13-3 19 1v21c-6-4-12-4.500-19-1z" fill="#fff"/><path d="M51 24c-7-3.500-13-3-19 1v21c6-4 12-4.500 19-1z" fill="#fff" opacity=".78"/><path d="M32 25v21" stroke="#1e88e5" stroke-width="1.500"/><circle cx="46" cy="15" r="8" fill="#ffd54f"/><text x="46" y="19" font-size="11" font-weight="800" text-anchor="middle" fill="#064e5a" font-family="system-ui">A</text></svg><h1>Easy English</h1><div class="sub">সহজে ইংরেজি শিখুন – প্রতিদিন একটু একটু করে</div><div id="off" class="small"></div></header>
 <nav id="nav"></nav><main id="app"></main>
 <footer>Developed By <b>Nahin</b> 💚</footer>
 <div id="cel"><div class="box"><div style="font-size:60px">🏆</div><h2>অভিনন্দন! 🎉</h2><p>এই টাস্কের সব শব্দ শেষ! তুমি দারুণ করছ। কাল আবার নতুন শব্দ নিয়ে দেখা হবে।</p><button class="btn alt" onclick="cel.style.display='none'">ধন্যবাদ 💜</button> <button class="btn" onclick="nextTask()">🚀 নতুন টাস্ক</button></div></div>
@@ -447,13 +451,13 @@ async function doTr(v,d){
  if(typeof claude!=="undefined"){try{const sm=await claude.use("sample");if(sm){const r=await sm(`Translate the following text into ${d==="en"?"Bangla (Bengali script)":"natural English"}. Output ONLY the translation.\n\n${v}`,{cache:true});return{t:r.text.trim(),src:"AI অনুবাদ"}}}catch(e){}}
  const hit=ALLS().find(x=>nz(d==="en"?x.e:x.b)===nz(v));
  if(hit)return{t:d==="en"?hit.b:hit.e,src:"অ্যাপের বাক্য-তালিকা"};
- try{const r=await fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(v)+"&langpair="+(d==="en"?"en|bn":"bn|en"));const j=await r.json(),t=j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t))return{t,src:"অনলাইন অনুবাদ"}}catch(e){}
+ try{if(navigator.onLine===false)return null;const r=await fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(v)+"&langpair="+(d==="en"?"en|bn":"bn|en"));const j=await r.json(),t=j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t))return{t,src:"অনলাইন অনুবাদ"}}catch(e){}
  return null}
 function chips(txt){const m=DM();return[...new Set(txt.toLowerCase().match(/[a-z]+/g)||[])].filter(w=>m.has(w)).slice(0,18).map(w=>`<span class="chip" onclick="sp('${w}')">${w} = ${m.get(w)}</span>`).join("")}
 function rTR(){
- $('#app').innerHTML=`<div class="card"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ${TD==="en"?"":"alt"}" onclick="setTD('en')">English → বাংলা</button><button class="btn ${TD==="bn"?"":"alt"}" onclick="setTD('bn')">বাংলা → English</button></div><textarea id="ti2" rows="4" style="margin-top:10px" placeholder="${TD==="en"?"এখানে ইংরেজি বাক্য লিখুন…":"এখানে বাংলায় বাক্য লিখুন…"}"></textarea><button class="btn" id="tb2">অনুবাদ করো 🔁</button></div><div id="to"></div>`;
+ $('#app').innerHTML=`<div class="card"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ${TD==="en"?"":"alt"}" onclick="setTD('en')">English → বাংলা</button><button class="btn ${TD==="bn"?"":"alt"}" onclick="setTD('bn')">বাংলা → English</button></div><textarea id="ti2" rows="4" style="margin-top:10px" placeholder="${TD==="en"?"এখানে ইংরেজি বাক্য লিখুন…":"এখানে বাংলায় বাক্য লিখুন…"}"></textarea><button class="btn" id="tb2">অনুবাদ করো 🔁</button><div class="small" style="margin-top:8px">📡 শুধু অনুবাদের জন্য ইন্টারনেট/Wi-Fi দরকার। বাকি সব অপশন অফলাইনে চলে।</div></div><div id="to"></div>`;
  $('#tb2').onclick=async()=>{const v=$('#ti2').value.trim();if(!v)return;const o=$('#to');o.innerHTML='<div class="card">অনুবাদ হচ্ছে… ⏳</div>';const r=await doTr(v,TD),en=TD==="en"?v:(r?r.t:"");
-  o.innerHTML=(TD==="en"?`<div class="card row"><div class="en">${esc(v)}</div><button class="ib" data-t="${esc(v)}" onclick="sp(this.dataset.t)">🔊</button></div>`:"")+(r?`<div class="card"><div class="small">${TD==="en"?"বাংলা অনুবাদ":"English translation"} • ${r.src}</div><div class="en" style="white-space:pre-wrap;margin-top:6px">${esc(r.t)}</div>${TD==="bn"?`<button class="ib" data-t="${esc(r.t)}" onclick="sp(this.dataset.t)">🔊</button>`:""}<div class="small" style="margin-top:8px">ℹ️ অনুবাদ যান্ত্রিক — গুরুত্বপূর্ণ কাজে মিলিয়ে নিন।</div></div>`:`<div class="card">😕 অনুবাদ করা যায়নি। অনুবাদের জন্য ইন্টারনেট দরকার — ইন্টারনেট চালু করে আবার চেষ্টা করুন।</div>`);
+  o.innerHTML=(TD==="en"?`<div class="card row"><div class="en">${esc(v)}</div><button class="ib" data-t="${esc(v)}" onclick="sp(this.dataset.t)">🔊</button></div>`:"")+(r?`<div class="card"><div class="small">${TD==="en"?"বাংলা অনুবাদ":"English translation"} • ${r.src}</div><div class="en" style="white-space:pre-wrap;margin-top:6px">${esc(r.t)}</div>${TD==="bn"?`<button class="ib" data-t="${esc(r.t)}" onclick="sp(this.dataset.t)">🔊</button>`:""}<div class="small" style="margin-top:8px">ℹ️ অনুবাদ যান্ত্রিক — গুরুত্বপূর্ণ কাজে মিলিয়ে নিন।</div></div>`:`<div class="card">😕 অনুবাদ করা যায়নি। অনুবাদের জন্য ইন্টারনেট/Wi-Fi দরকার — চালু করে আবার চেষ্টা করুন। (বাকি সব অপশন অফলাইনে চলে)</div>`);
   const c=en?chips(en):"";if(c)o.insertAdjacentHTML("beforeend",`<div class="card"><div class="small">📖 শব্দের অর্থ (ট্যাপ করলে উচ্চারণ)</div>${c}</div>`)}}
 let HK={};try{HK=JSON.parse(localStorage.getItem('eng-hk')||'{}')}catch(e){}
 let HL=60;
@@ -556,7 +560,50 @@ function nextW(m){const key=({hq:"hq",rv:"rv",wc:"wc"})[m]||"mc",P=key==="hq"?HA
  const R=mulb(st.s),ix=P.map((_,i)=>i);for(let i=ix.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[ix[i],ix[j]]=[ix[j],ix[i]]}
  const w=P[ix[st.i++]];try{localStorage.setItem("eng-dk-"+key,JSON.stringify(st))}catch(e){}return w}
 
-function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+let VOICE=null;
+function pickV(){try{const v=speechSynthesis.getVoices().filter(x=>/^en[-_]/i.test(x.lang));VOICE=v.find(x=>x.localService&&/en[-_]US/i.test(x.lang))||v.find(x=>x.localService)||v.find(x=>/en[-_]US/i.test(x.lang))||v[0]||null}catch(e){}}
+try{pickV();speechSynthesis.onvoiceschanged=pickV}catch(e){}
+function speak(t){try{const s=speechSynthesis;if(s.speaking||s.pending)s.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=VOICE?VOICE.lang:"en-US";u.rate=.95;if(VOICE)u.voice=VOICE;if(s.resume)s.resume();s.speak(u)}catch(e){}}
+let GM=null,GS={},GPT=0;try{GPT=+localStorage.getItem("eng-gp")||0}catch(e){}
+const GP=n=>{GPT+=n;try{localStorage.setItem("eng-gp",GPT)}catch(e){}const g=document.getElementById("gs");if(g)g.textContent="⭐ "+GPT}; 
+window.setGM=m=>{GM=m;render()};
+const poolW=()=>{let w;do{w=rnd(DICT)}while(!/^[a-z]{4,8}$/.test(w.w));return w};
+const GAMES={
+mt:B=>{const ws=[];while(ws.length<6){const w=rnd(DICT);if(w.b.length<14&&w.w.length<12&&!ws.some(x=>x.w===w.w||x.b===w.b))ws.push(w)}
+ const sh=a=>a.sort(()=>Math.random()-.5);let sel=null,left=6,mv=0;
+ const mkb=x=>`<button class="opt" data-k="${esc(x.k)}" data-s="${x.s}">${esc(x.t)}</button>`;
+ B.innerHTML=`<div class="small" style="margin:6px 0">প্রথমে English, তারপর তার বাংলা চাপো।</div><div class="mt"><div id="ml"></div><div id="mr"></div></div><div id="mo"></div>`;
+ $("#ml").innerHTML=sh(ws.map(w=>({k:w.w,t:w.w,s:"e"}))).map(mkb).join("");$("#mr").innerHTML=sh(ws.map(w=>({k:w.w,t:w.b,s:"b"}))).map(mkb).join("");
+ B.onclick=e=>{const b=e.target.closest(".opt");if(!b||b.disabled)return;if(b.dataset.s==="e")sp(b.dataset.k);
+  if(!sel||sel.dataset.s===b.dataset.s){if(sel)sel.classList.remove("sel");sel=b;b.classList.add("sel");return}
+  mv++;if(sel.dataset.k===b.dataset.k){[sel,b].forEach(x=>{x.classList.remove("sel");x.classList.add("ok");x.disabled=true});sel=null;GP(1);if(--left===0)$("#mo").innerHTML=`<div class="cmp good"><b>🎉 দারুণ! সব মিলেছে (${mv} চালে)</b></div><button class="btn" onclick="render()">আবার খেলো ➡️</button>`}
+  else{const a=sel;sel=null;a.classList.add("no");b.classList.add("no");setTimeout(()=>{a.classList.remove("no","sel");b.classList.remove("no")},450)}}},
+sc2:B=>{const w=poolW();let s=w.w.split("");do{s.sort(()=>Math.random()-.5)}while(s.join("")===w.w);let used=[];
+ const draw=()=>{const ans=used.map(i=>s[i]).join("");B.innerHTML=`<div class="card"><div>অর্থ: <b>${esc(w.b)}</b></div><div class="big">${ans.padEnd(w.w.length,"_").split("").join(" ")}</div><div>${s.map((c,i)=>`<button class="lt" data-i="${i}" ${used.includes(i)?"disabled":""}>${c}</button>`).join("")}</div><button class="btn alt" id="gu">↩️ মুছো</button><button class="btn alt" onclick="render()">⏭️ অন্য শব্দ</button><div id="go"></div></div>`;
+  $("#gu").onclick=()=>{used.pop();draw()};
+  B.querySelectorAll(".lt").forEach(b=>b.onclick=()=>{used.push(+b.dataset.i);const a=used.map(i=>s[i]).join("");if(a.length<w.w.length)return draw();if(a===w.w){draw();$("#go").innerHTML=`<div class="cmp good"><b>✅ সঠিক! ${w.w}</b></div><button class="btn" onclick="render()">পরের শব্দ ➡️</button>`;sp(w.w);GP(2)}else{used=[];draw();$("#go").innerHTML='<div class="cmp bad">❌ আবার চেষ্টা করো</div>'}})};draw()},
+hm:B=>{const w=poolW(),W=w.w.toUpperCase();let g=[],lives=6;
+ const draw=()=>{const sh=W.split("").map(c=>g.includes(c)?c:"_").join(" "),won=!sh.includes("_"),lost=lives<=0;
+  B.innerHTML=`<div class="card"><div>ইঙ্গিত: <b>${esc(w.b)}</b></div><div class="big">${sh}</div><div>${"❤️".repeat(lives)||"💔"}</div><div>${"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(c=>`<button class="lt" data-c="${c}" ${g.includes(c)||won||lost?"disabled":""}>${c}</button>`).join("")}</div>${won?`<div class="cmp good"><b>🎉 জিতেছ! ${w.w}</b></div>`:lost?`<div class="cmp bad"><b>😢 হেরে গেছ। শব্দটি ছিল: ${w.w}</b></div>`:""}${won||lost?'<button class="btn" onclick="render()">আবার ➡️</button>':""}</div>`;
+  if(won){sp(w.w);GP(2)}
+  B.querySelectorAll(".lt").forEach(b=>b.onclick=()=>{const c=b.dataset.c;g.push(c);if(!W.includes(c))lives--;draw()})};draw()},
+sp:B=>{let t=60,sc=0,n=0;clearInterval(GS.t);
+ B.innerHTML=`<div class="card row"><b id="tm">⏱️ 60</b><b id="sc">স্কোর 0</b></div><div id="lr" class="small"></div><div id="sq2"></div>`;
+ const next=()=>{const w=rnd(DICT),o=[w];while(o.length<4){const r=rnd(DICT);if(!o.includes(r))o.push(r)}o.sort(()=>Math.random()-.5);$("#sq2").innerHTML=`<div class="card"><div class="en">“${w.w}”</div>${o.map(x=>`<button class="opt" data-ok="${x===w?1:0}" data-a="${esc(w.w+" = "+w.b)}">${esc(x.b)}</button>`).join("")}</div>`};
+ $("#sq2").onclick=e=>{const b=e.target.closest(".opt");if(!b||t<=0)return;n++;const ok=b.dataset.ok==="1";if(ok){sc++;GP(1)}$("#sc").textContent="স্কোর "+sc;$("#lr").textContent=(ok?"✅ ":"❌ ")+b.dataset.a;next()};
+ next();
+ GS.t=setInterval(()=>{if(!document.getElementById("tm")){clearInterval(GS.t);return}t--;$("#tm").textContent="⏱️ "+t;if(t<=0){clearInterval(GS.t);let hs={};try{hs=JSON.parse(localStorage.getItem("eng-hs")||"{}")}catch(e){}const best=Math.max(hs.sp||0,sc);hs.sp=best;try{localStorage.setItem("eng-hs",JSON.stringify(hs))}catch(e){}$("#sq2").innerHTML=`<div class="cmp good"><b>⏰ সময় শেষ! স্কোর ${sc}/${n}</b><br>🏆 সেরা স্কোর: ${best}</div><button class="btn" onclick="render()">আবার খেলো ➡️</button>`}},1000)},
+sb:B=>{let x;do{x=rnd(SENT)}while(x.e.split(" ").length<3||x.e.split(" ").length>9);const ws=x.e.split(" "),sh=ws.map((w,i)=>({w,i})).sort(()=>Math.random()-.5);let ans=[];
+ const draw=()=>{B.innerHTML=`<div class="card"><div class="bn">${esc(x.b)}</div><div class="slotbox">${ans.map((a,k)=>`<button class="chip" data-r="${k}">${esc(a.w)}</button>`).join("")||'<span class="small">শব্দ চাপলে এখানে বসবে…</span>'}</div><div>${sh.map(a=>`<button class="chip" data-a="${a.i}" ${ans.includes(a)?"disabled":""}>${esc(a.w)}</button>`).join("")}</div><button class="btn alt" onclick="render()">⏭️ অন্য বাক্য</button><div id="go"></div></div>`;
+  B.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{ans.push(sh.find(a=>a.i==b.dataset.a));draw();if(ans.length===ws.length){const got=ans.map(a=>a.w).join(" "),ok=got===x.e;$("#go").innerHTML=ok?`<div class="cmp good"><b>✅ সঠিক!</b><br>${esc(x.e)}</div><button class="btn" onclick="render()">পরের বাক্য ➡️</button>`:`<div class="cmp bad"><b>❌ ঠিক হয়নি।</b><br>সঠিক: ${esc(x.e)}</div><button class="btn alt" onclick="render()">আবার</button>`;if(ok){sp(x.e);GP(2)}}});
+  B.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{ans.splice(+b.dataset.r,1);draw()})};draw()},
+ls:B=>{const w=poolW();B.innerHTML=`<div class="card"><div class="small">🔊 চেপে শব্দটি শুনো, তারপর বানান লেখো</div><button class="btn" id="pl">🔊 আবার শুনুন</button><input id="li" autocapitalize="off" autocomplete="off" placeholder="বানান লেখো…" style="margin-top:8px"><button class="btn" id="lc">চেক ✔️</button><button class="btn alt" onclick="render()">⏭️ অন্য শব্দ</button><div id="go"></div></div>`;
+ $("#pl").onclick=()=>sp(w.w);setTimeout(()=>sp(w.w),250);
+ $("#lc").onclick=()=>{const v=$("#li").value.trim().toLowerCase(),ok=v===w.w;$("#go").innerHTML=ok?`<div class="cmp good"><b>✅ সঠিক! ${w.w}</b> = ${esc(w.b)}</div>`:`<div class="cmp bad"><b>❌ ভুল</b><br>সঠিক বানান: <b>${w.w}</b> = ${esc(w.b)}</div>`;$("#go").innerHTML+='<button class="btn" onclick="render()">পরের শব্দ ➡️</button>';if(ok)GP(1)}}};
+function rGames(){
+ clearInterval(GS.t);const A=$("#app");
+ if(!GM){A.innerHTML=`<div class="card small">🎮 ৬টি গেম • সব অফলাইনে চলে • পয়েন্ট ফোনে সেভ থাকে <b id="gs">⭐ ${GPT}</b></div><div class="grid">${[["mt","🃏","Word Match","English ↔ বাংলা মিলাও"],["sc2","🔀","Word Scramble","এলোমেলো অক্ষর সাজাও"],["hm","🪢","Hangman","অক্ষর অনুমান করে শব্দ খোঁজো"],["sp","⚡","Speed Quiz","৬০ সেকেন্ডে যত পারো"],["sb","🧱","Sentence Builder","শব্দ সাজিয়ে বাক্য বানাও"],["ls","🎧","Listen & Spell","শুনে বানান লেখো"]].map(t=>`<div class="tile" onclick="setGM('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div></div>`).join("")}</div>`;return}
+ A.innerHTML=`<div class="card row"><button class="btn alt" onclick="setGM(null)">⬅️ গেম মেনু</button><b id="gs">⭐ ${GPT}</b></div><div id="gb"></div>`;GAMES[GM]($("#gb"))}
 window.sp=speak;
 let AC={};try{AC=JSON.parse(localStorage.getItem('eng-ai')||'{}')}catch(e){}
 function aiBox(v,n){const c=AC[v];return `<div class="card" style="border-color:#8ff0d0"><div class="row"><div><b>🤖 “${esc(v)}” – যেকোনো ইংরেজি শব্দের অর্থ</b><div class="small">${n?'তালিকায় '+n+'টি মিল পাওয়া গেছে। ':'তালিকায় নেই। '}যেকোনো শব্দের অর্থ AI থেকে নিন।</div></div><button class="ib" onclick="sp('${esc(v)}')">🔊</button></div><button class="btn" onclick="aiLook('${esc(v)}')">অর্থ খুঁজুন 🔎</button><div id="aio" class="tense" style="${c?'':'display:none;'}white-space:pre-wrap">${c?esc(c):''}</div></div>`}
@@ -567,7 +614,7 @@ window.aiLook=async v=>{const o=$('#aio');o.style.display='block';if(AC[v]){o.te
 let K={b:0,ids:[]};try{const s=JSON.parse(localStorage.getItem('eng-k2')||'null');if(s)K=s}catch(e){}
 const save=()=>{try{localStorage.setItem('eng-k2',JSON.stringify(K))}catch(e){}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const TABS=[['dict','📖','Dictionary','অভিধান – শব্দ খুঁজুন, উচ্চারণ শুনুন'],['daily','🌟','Daily Words','প্রতিদিনের ৫০ শব্দের টাস্ক'],['hw','🧩','Hard Words','কঠিন কিন্তু দরকারি শব্দ'],['quiz','🧠','Quiz','কুইজ খেলে শিখুন'],['tr','🔁','Translator','English ↔ বাংলা অনুবাদ'],['sent','💬','Daily Sentences','দৈনন্দিন বাক্য ও Tense'],['hard','🔥','Hard Sentences','কঠিন কিন্তু কাজের বাক্য'],['ai','🎙️','AI Talk','AI এর সাথে ইংরেজিতে কথা']];
+const TABS=[['dict','📖','Dictionary','অভিধান – শব্দ খুঁজুন, উচ্চারণ শুনুন'],['daily','🌟','Daily Words','প্রতিদিনের ৫০ শব্দের টাস্ক'],['hw','🧩','Hard Words','কঠিন কিন্তু দরকারি শব্দ'],['quiz','🧠','Quiz','কুইজ খেলে শিখুন'],['games','🎮','Games','ইংরেজি শেখার ৬টি মজার গেম'],['tr','🔁','Translator','📡 অনুবাদ (ইন্টারনেট লাগবে)'],['sent','💬','Daily Sentences','দৈনন্দিন বাক্য ও Tense'],['hard','🔥','Hard Sentences','কঠিন কিন্তু কাজের বাক্য'],['speak','🎙️','Speaking','বলে বলে অনুশীলন করুন']];
 let cur='home';
 window.go=t=>{cur=t;render()};
 function confetti(){const em=['🎉','✨','🎊','⭐','💖','🌟'];for(let i=0;i<70;i++){const d=document.createElement('div');d.className='cf';d.textContent=em[i%6];d.style.left=Math.random()*100+'vw';d.style.animationDuration=2+Math.random()*3+'s';d.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),6500)}}
@@ -582,7 +629,7 @@ function rHome(){
  <div class="grid">`+TABS.map(t=>`<div class="tile" onclick="go('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div>${CNTF(t[0])}</div>`).join('')+'</div>'}
 function render(keep){
  $('#app').className=['dict','daily','hw','sent','hard'].includes(cur)?'noanim':'';
- if(cur==='home')rHome();else{({dict:rDict,daily:rDaily,hw:rHW,tr:rTR,quiz:rQuiz,sent:()=>rSent(SENT),hard:()=>rSent(HARD),ai:rAI})[cur]();
+ if(cur==='home')rHome();else{({dict:rDict,daily:rDaily,hw:rHW,tr:rTR,games:rGames,quiz:rQuiz,sent:()=>rSent(SENT),hard:()=>rSent(HARD),speak:rSpeak})[cur]();
   const T=TABS.find(x=>x[0]===cur);$('#app').insertAdjacentHTML('afterbegin',`<div class="row" style="margin:6px 0 4px"><button class="btn alt" onclick="go('home')">⬅️ হোম</button><b><span class="hi">${T[1]}</span> ${T[2]}</b></div>`)}
  if(!keep)window.scrollTo(0,0);
 }
@@ -591,7 +638,7 @@ let LIM=60;
 function shown(r){return r.slice(0,LIM).map(x=>wcard(x,0)).join('')+(r.length>LIM?`<button class="btn" onclick="showMore()">আরও দেখুন (${r.length-LIM}টি বাকি) ⬇️</button>`:'')}
 function rDict(){
  $('#app').innerHTML=`<div class="card"><input id="q" placeholder="🔍 শব্দ খুঁজুন (English বা বাংলা)…"><div class="small" style="margin-top:6px">মোট ${DICT.length}টি শব্দ • 🔊 চাপলে উচ্চারণ শুনবেন</div></div><div id="l"></div>`;
- const L=v=>{v=v.trim().toLowerCase();const r=DICT.filter(x=>!v||x.w.includes(v)||x.b.includes(v));$('#l').innerHTML=(v&&/^[a-z' -]{2,40}$/.test(v)?aiBox(v,r.length):'')+shown(r)};
+ const L=v=>{v=v.trim().toLowerCase();const r=DICT.filter(x=>!v||x.w.includes(v)||x.b.includes(v));$('#l').innerHTML=(r.length?shown(r):'<div class="card">শব্দটি তালিকায় নেই 🙈 অন্য বানানে চেষ্টা করুন।</div>')};
  $('#q').oninput=e=>{clearTimeout(window._dt);const v=e.target.value;window._dt=setTimeout(()=>{LIM=60;L(v)},120)};window.showMore=()=>{LIM+=100;L($('#q').value)};L('');
 }
 const NB=1+Math.ceil(POOL.length/50),BATCH=b=>{b%=NB;return b?POOL.slice((b-1)*50,b*50):DAILY};
@@ -629,7 +676,7 @@ function rQuiz(){
   B.onclick=e=>{if(!e.target.classList.contains('opt')||e.target.dataset.done)return;const ok=e.target.dataset.ok==1;Q.n++;if(ok)Q.s++;e.target.classList.add(ok?'ok':'no');B.querySelectorAll('.opt').forEach(b=>{b.dataset.done=1;if(b.dataset.ok==1)b.classList.add('ok')});B.insertAdjacentHTML('beforeend',`<button class="btn" onclick="render()">পরের প্রশ্ন ➡️</button>`)}
  }else if(Q.mode=='rv'){const o=[w];while(o.length<4){const r=rnd(DICT);if(!o.includes(r))o.push(r)}o.sort(()=>Math.random()-.5);B.innerHTML=`<div class="card"><div class="en">“${w.b}” — ইংরেজিতে কী?</div>${o.map(x=>`<button class="opt" data-ok="${x===w?1:0}">${x.w}</button>`).join('')}</div>`;B.onclick=e=>{if(!e.target.classList.contains('opt')||e.target.dataset.done)return;const ok=e.target.dataset.ok==1;Q.n++;if(ok)Q.s++;e.target.classList.add(ok?'ok':'no');B.querySelectorAll('.opt').forEach(b=>{b.dataset.done=1;if(b.dataset.ok==1)b.classList.add('ok')});B.insertAdjacentHTML('beforeend','<button class="btn" onclick="render()">পরের প্রশ্ন ➡️</button>')}}else if(Q.mode=='wc'){WCQ(B,w)}else if(Q.mode=='sc'){
   const q=nextQ(),o=q.o.map((t,i)=>({t,ok:i==0})).sort(()=>Math.random()-.5);
-  B.innerHTML=`<div class="card"><div class="en">কোন বাক্যটি সঠিক?</div>${o.map(x=>`<button class="opt" data-ok="${x.ok?1:0}">${esc(x.t)}</button>`).join('')}</div><div id="ex"></div><button class="btn alt" onclick="genQ()">🤖 AI দিয়ে নতুন প্রশ্ন বানাও</button> <span id="gq" class="small"></span>`;
+  B.innerHTML=`<div class="card"><div class="en">কোন বাক্যটি সঠিক?</div>${o.map(x=>`<button class="opt" data-ok="${x.ok?1:0}">${esc(x.t)}</button>`).join('')}</div><div id="ex"></div>`;
   B.onclick=e=>{if(!e.target.classList.contains('opt')||e.target.dataset.done)return;const ok=e.target.dataset.ok==1;Q.n++;if(ok)Q.s++;e.target.classList.add(ok?'ok':'no');B.querySelectorAll('.opt').forEach(b=>{b.dataset.done=1;if(b.dataset.ok==1)b.classList.add('ok')});$('#ex').innerHTML=`<div class="card"><b>${ok?'সঠিক! 🎉':'ভুল হয়েছে 😅 – কেন?'}</b><div class="tense">${q.e.split('¶').map(esc).join('<br>')}</div><button class="btn" onclick="render()">পরের প্রশ্ন ➡️</button></div>`}
  }else{
   B.innerHTML=`<div class="card"><div class="en">“${w.w}” (${w.b}) দিয়ে একটি ইংরেজি বাক্য লিখুন</div><textarea id="ans" rows="2" placeholder="Write your sentence…"></textarea><button class="btn" id="ck">AI দিয়ে চেক করো ✔️</button><button class="btn alt" onclick="render()">অন্য শব্দ</button><div id="fb" class="tense" style="display:none;white-space:pre-wrap"></div></div>`;
@@ -646,6 +693,16 @@ function rSent(A){
   $('#sl').innerHTML=r.slice(0,L).map(x=>`<div class="card"><div class="row"><div><div class="en">${esc(x.e)}</div><div class="bn">${esc(x.b)}</div></div><button class="ib" onclick="sp(this.dataset.t)" data-t="${esc(x.e)}">🔊</button></div><button class="btn alt" onclick="var d=this.nextElementSibling;d.style.display=d.style.display=='block'?'none':'block'">📚 Tense</button><div class="tense" style="display:none">${esc(x.t)}</div></div>`).join('')+(r.length>L?`<button class="btn" id="sm2">আরও দেখুন (${r.length-L}টি বাকি) ⬇️</button>`:'');
   const m=$('#sm2');if(m)m.onclick=()=>{L+=60;D($('#sq').value)}};
  D('');$('#sq').oninput=e=>{clearTimeout(window._st);const v=e.target.value;window._st=setTimeout(()=>{L=40;D(v)},150)};
+}
+
+let SP=0;
+function rSpeak(){
+ const s=SENT[SP%SENT.length];
+ $('#app').innerHTML=`<div class="card"><div class="small">১) 🔊 শুনুন  ২) 🎤 চেপে বাক্যটি জোরে বলুন  ৩) স্কোর দেখুন</div><div class="en" style="margin-top:10px">${esc(s.e)}</div><div class="bn">${esc(s.b)}</div><button class="btn alt" onclick="sp(SENT[SP%SENT.length].e)">🔊 শুনুন</button><button class="btn" id="sm">🎤 বলুন</button><button class="btn alt" onclick="SP++;rSpeak()">পরের বাক্য ➡️</button><div id="sr" class="tense" style="display:none"></div></div>`;
+ $('#sm').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition,o=$('#sr');o.style.display='block';if(navigator.onLine===false){o.textContent='📡 ভয়েস চেক ইন্টারনেট ছাড়া চলে না। 🔊 শুনে নিজে জোরে বলে অনুশীলন করুন।';return}if(!SR){o.textContent='এই ব্রাউজারে ভয়েস ইনপুট নেই। Chrome ব্যবহার করুন।';return}
+  const r=new SR();r.lang='en-US';o.textContent='শুনছি… 🎧';
+  r.onresult=e=>{const h=e.results[0][0].transcript.toLowerCase().replace(/[^a-z' ]/g,'').split(/\s+/),w=s.e.toLowerCase().replace(/[^a-z' ]/g,'').split(/\s+/),m=w.filter(x=>h.includes(x)).length,p=Math.round(m/w.length*100);o.innerHTML=`আপনি বলেছেন: “${esc(e.results[0][0].transcript)}”<br><b>${p}% মিলেছে ${p>=80?'🎉 দারুণ!':p>=50?'👍 ভালো, আবার চেষ্টা করুন':'💪 আবার শুনে বলুন'}</b>`};
+  r.onerror=()=>{o.textContent='শুনতে পারিনি, আবার চেষ্টা করুন।'};try{r.start()}catch(e){}}
 }
 let H=[],rec=null,busy=false;
 function rAI(){
@@ -680,4 +737,9 @@ async function send(t){
  busy=false}
 
 render();
+(function(){const o=document.getElementById("off");if(!o)return;
+ if(location.protocol==="file:"){o.textContent="📁 ফাইল থেকে খুলেছেন — অ্যাপ ইন্টারনেট ছাড়াই চলবে";return}
+ if(!("serviceWorker"in navigator)){return}
+ o.textContent="⏳ অফলাইন মোড প্রস্তুত হচ্ছে…";
+ navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{o.textContent="📶 অফলাইনে ব্যবহারের জন্য প্রস্তুত ✅"}).catch(()=>{o.textContent="⚠️ অফলাইন মোড চালু হয়নি — https লিংকে খুলুন"})})();
 </script></body></html>

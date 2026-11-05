@@ -1,4 +1,4 @@
-const C="easy-english-v24",F=["index.html","manifest.json","icon-192.png","icon-512.png"];
+const C="easy-english-v37",F=["index.html","manifest.json","icon-192.png","icon-512.png"];
 const clean=async res=>{if(!res||!res.ok||!res.redirected)return res;const b=await res.clone().blob();return new Response(b,{status:200,statusText:"OK",headers:res.headers})};
 const putShell=async(c,res)=>{const r=await clean(res);await c.put("index.html",r.clone());await c.put("./",r.clone())};
 self.addEventListener("install",e=>{e.waitUntil((async()=>{const c=await caches.open(C);

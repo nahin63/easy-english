@@ -437,6 +437,32 @@ body.bk #mnu{ --mbg:rgba(41,37,29,.97); --mfg:var(--bk-text); --mac:var(--bk-pin
 .mth .tg{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; padding:8px 2px 10px }
 .mf{ margin-top:auto; padding-top:18px; font-size:12px; opacity:.6; text-align:center }
 </style>
+<style id="perf-css">
+/* ---- smoothness ---- */
+html{scroll-behavior:auto;-webkit-overflow-scrolling:touch}
+body{overscroll-behavior-y:contain}
+.tile::after{display:none!important;animation:none!important}
+.topbar,.topbar .btn,.card.row>.btn.alt:first-child,.mbtn{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.topbar{background:var(--tbg,#0a0a2cf2)}
+#app.pgin{animation:pgin .38s cubic-bezier(.22,1,.36,1) both}
+@keyframes pgin{from{opacity:0}to{opacity:1}}
+.chat{scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.card,.tile,.opt,.chip,.btn{transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .25s ease,box-shadow .25s ease,opacity .25s ease}
+
+/* ---- books: slow idle motion, gold emblem, bookmark ribbon ---- */
+.bk-book{animation:bkFloat 7s ease-in-out infinite;animation-delay:calc(var(--i) * -1.3s)}
+@keyframes bkFloat{0%,100%{translate:0 0;rotate:y 0deg}50%{translate:0 -7px;rotate:y -3.5deg}}
+.bk-card.sel .bk-book,.bk-gallery.leaving .bk-card:not(.sel) .bk-book{animation-play-state:paused}
+.bk-shadow{animation:bkShadow 7s ease-in-out infinite;animation-delay:calc(var(--i) * -1.3s)}
+@keyframes bkShadow{0%,100%{transform:translate3d(10px,16px,-40px) scale(1);opacity:1}50%{transform:translate3d(10px,23px,-40px) scale(.9);opacity:.72}}
+.bk-title::after{content:"";display:block;width:34%;height:1.5px;margin:.6em auto 0;background:currentColor;opacity:.45}
+.bk-emblem{position:absolute;z-index:2;left:50%;top:57%;width:36%;aspect-ratio:1;transform:translate(-50%,-50%);display:grid;place-items:center;
+  border-radius:50%;border:1.5px solid var(--ink);color:var(--ink);opacity:.72;font-size:calc(var(--w) * .105);font-style:italic;font-weight:600;
+  box-shadow:0 0 0 5px rgba(255,255,255,.05),inset 0 0 0 4px rgba(255,255,255,.05)}
+.bk-ribbon{position:absolute;left:72%;top:95%;width:7%;height:16%;background:linear-gradient(#b8452f,#8a2d1d);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);
+  transform:translate3d(0,0,-8px);transform-origin:50% 0;animation:bkRibbon 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * -.9s)}
+@keyframes bkRibbon{50%{transform:translate3d(0,0,-8px) rotate(4deg)}}
+</style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="eelogo" viewBox="0 0 512 512"><defs>
 <linearGradient id="eeBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset=".55" stop-color="#2563eb"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
@@ -568,7 +594,8 @@ Were he to resign, the company would suffer.|সে পদত্যাগ কর
 Unless you hurry, you will miss the train.|তাড়াতাড়ি না করলে তুমি ট্রেন মিস করবে।|Unless = if not — First Conditional।
 She insisted on paying the bill herself.|সে নিজেই বিল দেওয়ার জন্য জোর করল।|insist on + verb-ing।`;
 HARDW.push(...NEWH);{const q=new Set();HARDW.splice(0,HARDW.length,...HARDW.filter(x=>!q.has(x.w)&&q.add(x.w)))}
-const _s=new Set(),ALL=[...DAILY,...EXTRA,...MORE,...MORE2,...MORE3,...MORE4,...MORE5,...MORE6,...MORE7,...MORE8,...MORE9,...NEWD].filter(x=>!_s.has(x.w)&&_s.add(x.w)),POOL=ALL.slice(DAILY.length),DICT=[...ALL,...HARDW.filter(x=>!_s.has(x.w)&&_s.add(x.w)),...NEWX.filter(x=>!_s.has(x.w)&&_s.add(x.w))].sort((a,b)=>a.w.localeCompare(b.w));
+const NEWZ=pw(`accountable:জবাবদিহিমূলক,activate:সক্রিয় করা,affection:স্নেহ,agenda:কর্মসূচি,aggressive:আক্রমণাত্মক,align:সারিবদ্ধ করা,alternate:পালাক্রমে,amplify:বিবর্ধিত করা,annoy:বিরক্ত করা,approach:কাছে যাওয়া,assign:দায়িত্ব দেওয়া,assist:সাহায্য করা,assure:নিশ্চিত করা,attach:সংযুক্ত করা,awkward:বিব্রতকর,betray:বিশ্বাসঘাতকতা করা,boundary:সীমানা,brutal:নিষ্ঠুর,casual:অনানুষ্ঠানিক,circulate:প্রচারিত হওয়া,classify:শ্রেণিবদ্ধ করা,combine:একত্র করা,compact:ঘন,comply:মেনে চলা,compose:রচনা করা,confess:স্বীকার করা,conflict:দ্বন্দ্ব,congregate:জড়ো হওয়া,conquer:জয় করা,consist:গঠিত হওয়া,consume:ভোগ করা,context:প্রসঙ্গ,contrast:পার্থক্য,coordinate:সমন্বয় করা,defeat:পরাজিত করা,define:সংজ্ঞায়িত করা,delicate:নাজুক,depart:প্রস্থান করা,descend:নামা,deserve:প্রাপ্য হওয়া,desperate:মরিয়া,discourage:নিরুৎসাহিত করা,display:প্রদর্শন,durable:টেকসই,economy:অর্থনীতি,edible:ভোজ্য,edit:সম্পাদনা করা,effective:কার্যকর,emphasis:গুরুত্ব,enforce:প্রয়োগ করা,engage:জড়িত হওয়া,entertain:বিনোদন দেওয়া,entitle:অধিকার দেওয়া,equip:সজ্জিত করা,erase:মুছে ফেলা,essence:সারমর্ম,examine:পরীক্ষা করা,execute:কার্যকর করা,extend:বাড়ানো,external:বাহ্যিক,extreme:চরম,faculty:অনুষদ,fade:ম্লান হওয়া,fairness:ন্যায্যতা,feature:বৈশিষ্ট্য,financial:আর্থিক,framework:কাঠামো,frequent:ঘন ঘন,frustrate:হতাশ করা,fulfill:পূরণ করা,function:কার্যকারিতা,globe:গোলক,govern:শাসন করা,grant:অনুদান,guidance:নির্দেশনা,habitat:বাসস্থান,halt:থামানো,harmony:সম্প্রীতি,hierarchy:স্তরবিন্যাস,identify:শনাক্ত করা,immigrant:অভিবাসী,incentive:প্রণোদনা,incorporate:অন্তর্ভুক্ত করা,individual:ব্যক্তি,inherit:উত্তরাধিকার সূত্রে পাওয়া,initial:প্রাথমিক,instance:দৃষ্টান্ত,instinct:সহজাত প্রবৃত্তি,institution:প্রতিষ্ঠান,instruct:নির্দেশ দেওয়া,intellect:বুদ্ধিমত্তা,intend:ইচ্ছা করা,interact:মিথস্ক্রিয়া করা,interfere:হস্তক্ষেপ করা,internal:অভ্যন্তরীণ,interval:বিরতি,intimate:ঘনিষ্ঠ,invest:বিনিয়োগ করা,invisible:অদৃশ্য,involve:জড়িত করা,journal:দিনলিপি,lasting:দীর্ঘস্থায়ী,layer:স্তর,leadership:নেতৃত্ব,legacy:উত্তরাধিকার,leisure:অবসর,literally:আক্ষরিকভাবে,majority:সংখ্যাগরিষ্ঠতা,manifest:প্রকাশ পাওয়া,margin:প্রান্তসীমা,massive:বিশাল,maximum:সর্বোচ্চ,merchant:ব্যবসায়ী,merge:একীভূত হওয়া,minimize:ন্যূনতম করা,minor:ছোটখাটো,mislead:বিভ্রান্ত করা,moderate:মধ্যম,motive:উদ্দেশ্য,mutual:পারস্পরিক,nominate:মনোনীত করা,norm:রীতিনীতি,notable:উল্লেখযোগ্য,nourish:পুষ্টি দেওয়া,nuisance:উপদ্রব,objective:লক্ষ্য,obligation:বাধ্যবাধকতা,occur:ঘটা,offend:আঘাত দেওয়া,offset:ভারসাম্য আনা,orient:দিকনির্দেশ করা,outlook:দৃষ্টিভঙ্গি,overwhelm:অভিভূত করা,panic:আতঙ্ক,parallel:সমান্তরাল,passive:নিষ্ক্রিয়,perish:বিনষ্ট হওয়া,permanent:স্থায়ী,permit:অনুমতি দেওয়া,pioneer:অগ্রদূত,plea:আর্জি,pledge:অঙ্গীকার,portion:অংশ,portray:চিত্রায়িত করা,pose:ভঙ্গি,possess:অধিকারী হওয়া,practical:বাস্তবসম্মত,prevent:প্রতিরোধ করা,privilege:সুবিধা,probable:সম্ভাব্য,procedure:কার্যপ্রণালী,profound:গভীর,prolong:দীর্ঘায়িত করা,prompt:তৎক্ষণাৎ,property:সম্পত্তি,proportion:অনুপাত,propose:প্রস্তাব করা,protest:প্রতিবাদ,prove:প্রমাণ করা,qualify:যোগ্য হওয়া,quote:উদ্ধৃতি,radical:মৌলিক,random:এলোমেলো,rapid:দ্রুত,react:প্রতিক্রিয়া দেখানো,recommend:সুপারিশ করা,refer:উল্লেখ করা,reflect:প্রতিফলিত করা,register:নিবন্ধন করা,regulate:নিয়ন্ত্রণ করা,relevant:প্রাসঙ্গিক,rely:ভরসা করা,remedy:প্রতিকার,render:করে তোলা,renew:নবায়ন করা,represent:প্রতিনিধিত্ব করা,reputation:সুনাম,resemble:সদৃশ হওয়া,reside:বসবাস করা,resist:প্রতিরোধ করা,resource:সম্পদ,restore:পুনরুদ্ধার করা,rival:প্রতিদ্বন্দ্বী,rural:গ্রামীণ,sacrifice:ত্যাগ,scheme:পরিকল্পনা,scope:পরিসর,segment:অংশ,sensible:বিবেচক,sensitive:সংবেদনশীল,sequence:ক্রম,shift:স্থানান্তর,significant:তাৎপর্যপূর্ণ,sparse:বিরল,specific:নির্দিষ্ট,speculate:অনুমান করা,stable:স্থিতিশীল,steady:অবিচল,stimulate:উদ্দীপিত করা,strategy:কৌশল,strict:কড়া,subsequent:পরবর্তী,substance:পদার্থ,substitute:বিকল্প,summit:শীর্ষ,superior:উন্নততর,surrender:আত্মসমর্পণ করা,survey:জরিপ,suspect:সন্দেহ করা,suspend:স্থগিত করা,symbol:প্রতীক,temporary:সাময়িক,tendency:প্রবণতা,terminate:সমাপ্ত করা,territory:এলাকা,threshold:প্রবেশদ্বার,trigger:সূত্রপাত ঘটানো,ultimate:চূড়ান্ত,undermine:দুর্বল করা,unify:একত্র করা,unveil:উন্মোচন করা,upgrade:উন্নীত করা,urge:তাগিদ দেওয়া,valuable:মূল্যবান,variable:পরিবর্তনশীল,vary:ভিন্ন হওয়া,version:সংস্করণ,vibrant:প্রাণবন্ত,victim:শিকার,visible:দৃশ্যমান,welfare:কল্যাণ,worthwhile:মূল্যবান,astronaut:মহাকাশচারী,auditor:নিরীক্ষক,bartender:পানশালার কর্মী,biologist:জীববিজ্ঞানী,bricklayer:রাজমিস্ত্রি,broker:দালাল,chemist:রসায়নবিদ,curator:তত্ত্বাবধায়ক,diplomat:কূটনীতিক,economist:অর্থনীতিবিদ,firefighter:দমকলকর্মী,geologist:ভূতত্ত্ববিদ,historian:ইতিহাসবিদ,janitor:ঝাড়ুদার,mayor:মেয়র,philosopher:দার্শনিক,physicist:পদার্থবিদ,politician:রাজনীতিবিদ,psychologist:মনোবিজ্ঞানী,sculptor:ভাস্কর,wrestler:কুস্তিগীর,knuckle:আঙুলের গাঁট,nostril:নাকের ছিদ্র,operation:অস্ত্রোপচার,pill:বড়ি,anchorage:নোঙর করার জায়গা,archive:মহাফেজখানা,corridor:বারান্দা,floorboard:মেঝের তক্তা,gutter:নর্দমা,hinge:কব্জা,latch:খিল,plaster:পলেস্তারা,railing:রেলিং,veranda:বারান্দা,windowsill:জানালার চৌকাঠ,anvil:নেহাই,axle:চাকার অক্ষদণ্ড,clamp:আটকানোর যন্ত্র,crowbar:লোহার শাবল,lever:লিভার,pulley:কপিকল,spade:কোদাল,tongs:চিমটা,wrench:রেঞ্চ,fuse:ফিউজ,algae:শৈবাল,cactus:ক্যাকটাস,canyon:গিরিখাত,cloudy:মেঘলা,coral:প্রবাল,crater:আগ্নেয়গিরির মুখ,creek:খাঁড়ি,dune:বালিয়াড়ি,fern:ফার্ন,gorge:গিরিপথ,grove:ছোট বন,gust:দমকা হাওয়া,hurricane:ঘূর্ণিঝড়,iceberg:হিমশৈল,lagoon:উপহ্রদ,lava:লাভা,mist:কুয়াশা,oasis:মরূদ্যান,prairie:প্রান্তর,puddle:ডোবা,ridge:শৈলশিরা,reef:প্রবালপ্রাচীর,slope:ঢাল,tornado:টর্নেডো,tsunami:সুনামি,wetland:জলাভূমি,wildfire:দাবানল,antelope:হরিণজাতীয় প্রাণী,cheetah:চিতা,dragonfly:ফড়িং,gecko:টিকটিকি,giraffe:জিরাফ,hedgehog:শজারু,hippo:জলহস্তী,jackal:শিয়াল,mule:খচ্চর,porcupine:সজারু,rhino:গন্ডার,broccoli:ব্রকলি,chestnut:শাহবালুত,dates:খেজুর,cache:ক্যাশ,captcha:ক্যাপচা,desktop:ডেস্কটপ,encrypt:এনক্রিপ্ট করা,template:ছাঁচ,username:ব্যবহারকারীর নাম,webcam:ওয়েবক্যাম,wireless:বেতার,brand:ব্র্যান্ড,cheque:চেক,client:মক্কেল,competitor:প্রতিযোগী,entrepreneur:উদ্যোক্তা,manufacture:উৎপাদন করা,partnership:অংশীদারিত্ব,payroll:বেতনের তালিকা,purchase:ক্রয়,supplier:সরবরাহকারী,campus:ক্যাম্পাস,curriculum:পাঠ্যক্রম,literacy:সাক্ষরতা,mentor:পরামর্শদাতা,quiz:ছোট পরীক্ষা,semester:সেমিস্টার,thesis:গবেষণাপত্র,tuition:শিক্ষাদান,boarding:বিমানে ওঠা,destination:গন্তব্য,excursion:ভ্রমণ,hostel:ছাত্রাবাস,itinerary:ভ্রমণসূচি,pilgrimage:তীর্থযাত্রা,terminal:টার্মিনাল,transit:পরিবহন,affectionate:স্নেহশীল,amazed:বিস্মিত,content:সন্তুষ্ট,delighted:আনন্দিত,depressed:বিষণ্ণ,disgusted:বিতৃষ্ণ,frightened:ভীত,hysterical:উন্মত্ত,panicked:আতঙ্কিত,puzzled:হতবুদ্ধি,stunned:স্তম্ভিত,blazer:ব্লেজার,buckle:বকলস,cardigan:সোয়েটার,cloak:আলখাল্লা,corduroy:মোটা সুতির কাপড়,hoodie:হুডি,lace:ফিতা,muffler:গলাবন্ধ,pajamas:পায়জামা,pendant:লকেট,sandals:চপ্পল,sneakers:কেডস,cyclist:সাইকেল আরোহী,defender:রক্ষণভাগের খেলোয়াড়,fencing:তলোয়ার খেলা,goalkeeper:গোলরক্ষক,gymnasium:ব্যায়ামাগার,javelin:বর্শা,relay:রিলে,rowing:দাঁড় টানা,sprint:দৌড়,accordion:অ্যাকর্ডিয়ন,album:অ্যালবাম,ballad:গাথা,composer:সুরকার,drummer:ঢাকি,guitarist:গিটারবাদক,tune:সুর,beverage:পানীয়,cereal:শস্য,grill:ঝলসানো,platter:বড় থালা,seasoning:মশলা,skewer:শিক,stew:ঝোল,teapot:চায়ের কেতলি,whisk:ফেটানো,abruptly:হঠাৎ,altogether:সব মিলিয়ে,apparently:দৃশ্যত,consequently:ফলস্বরূপ,currently:বর্তমানে,deeply:গভীরভাবে,furthermore:তদুপরি,gradually:ক্রমে ক্রমে,likewise:একইভাবে,meanwhile:ইতিমধ্যে,nonetheless:তবুও,notwithstanding:সত্ত্বেও,overall:সামগ্রিকভাবে,presumably:সম্ভবত,relatively:তুলনামূলকভাবে,simultaneously:একই সাথে,somehow:কোনোভাবে,subsequently:পরবর্তীতে,thereby:তার ফলে,thereafter:তারপর,thoroughly:পুঙ্খানুপুঙ্খভাবে,thus:এভাবে,bump:ধাক্কা খাওয়া,carve:খোদাই করা,creep:গুঁড়ি মেরে চলা,dodge:এড়িয়ে যাওয়া,flap:ঝাপটানো,fling:ছুড়ে মারা,gaze:একদৃষ্টিতে তাকানো,gulp:ঢকঢক করে গেলা,hurl:ছুড়ে মারা,jog:ধীরে দৌড়ানো,limp:খুঁড়িয়ে হাঁটা,paddle:দাঁড় টানা,peek:উঁকি দেওয়া,pounce:ঝাঁপিয়ে পড়া,punch:ঘুষি মারা,roam:ঘুরে বেড়ানো,sip:চুমুক দেওয়া,skip:লাফিয়ে চলা,slap:চড় মারা,slide:পিছলে যাওয়া,sneak:চুপিচুপি যাওয়া,stagger:টলতে টলতে চলা,tiptoe:পা টিপে চলা,toss:ছুড়ে দেওয়া,trot:ছোট ছোট পায়ে দৌড়ানো,wag:নাড়ানো,wiggle:নড়াচড়া করা,asteroid:গ্রহাণু,atmosphere:বায়ুমণ্ডল,constellation:নক্ষত্রপুঞ্জ,chemical:রাসায়নিক,element:মৌল,laboratory:গবেষণাগার,particle:কণা,funeral:অন্ত্যেষ্টিক্রিয়া,boredom:একঘেয়েমি,curiosity:কৌতূহল,dignity:মর্যাদা,eloquence:বাগ্মিতা,humility:বিনয়,jealousy:ঈর্ষা,modesty:শালীনতা,optimism:আশাবাদ,perseverance:অধ্যবসায়,resilience:স্থিতিস্থাপকতা,serenity:প্রশান্তি,arch:খিলান,bazaar:বাজার,carriage:গাড়ি,monarch:রাজা,host:আয়োজক,chill:শীতল ভাব,weekday:কর্মদিবস,viper:বিষধর সাপ,mongoose:বেজি,cub:শাবক,calf:বাছুর,lamb:মেষশাবক,foal:ঘোড়ার বাচ্চা,kitten:বিড়ালছানা,duckling:হাঁসের ছানা,nestling:পাখির ছানা,larva:শূককীট,cocoon:গুটি,beehive:মৌচাক,anthill:উইঢিবি,spiderweb:মাকড়সার জাল,pawprint:থাবার ছাপ,heartburn:বুকজ্বালা,backache:পিঠব্যথা,backyard:বাড়ির পেছনের উঠান,hillside:পাহাড়ের ঢাল,seashore:সমুদ্রতীর,sandbank:চর,archipelago:দ্বীপপুঞ্জ,wilderness:বনভূমি,wasteland:পতিত জমি`);
+const _s=new Set(),ALL=[...DAILY,...EXTRA,...MORE,...MORE2,...MORE3,...MORE4,...MORE5,...MORE6,...MORE7,...MORE8,...MORE9,...NEWD].filter(x=>!_s.has(x.w)&&_s.add(x.w)),POOL=ALL.slice(DAILY.length),DICT=[...ALL,...HARDW.filter(x=>!_s.has(x.w)&&_s.add(x.w)),...NEWX.filter(x=>!_s.has(x.w)&&_s.add(x.w)),...NEWZ.filter(x=>!_s.has(x.w)&&_s.add(x.w))].sort((a,b)=>a.w.localeCompare(b.w));
 const mk=t=>t.split('\n').map(l=>{const[e,b,t2]=l.split('|');return{e,b,t:t2}});
 const SENT=mk(`I am learning English.|আমি ইংরেজি শিখছি।|Present Continuous — am + verb-ing (learning)। এখন যা চলছে।
 She goes to school every day.|সে প্রতিদিন স্কুলে যায়।|Simple Present — he/she/it এর সাথে verb-এ s/es (goes)। নিয়মিত অভ্যাস।
@@ -1054,15 +1081,16 @@ function render(keep){updStat();
  if(cur==='home')rHome();else{({dict:rDict,daily:rDaily,hw:rHW,tr:rTR,games:rGames,quiz:rQuiz,sent:()=>rSent(SENT),hard:()=>rSent(HARD),speak:rSpeak,ai:rAI})[cur]();
   const T=TABS.find(x=>x[0]===cur);$('#app').insertAdjacentHTML('afterbegin',`<div class="row topbar" style="margin:6px 0 4px"><b><span class="hi">${T[1]}</span> ${T[2]}</b><button class="btn alt" style="margin:0" onclick="go('home')">হোম ➡️</button></div>`)}
  window.bkSync&&bkSync();
- if(!keep)window.scrollTo(0,0);
+ if(!keep&&!document.body.classList.contains('bk')){const a=$('#app');a.classList.remove('pgin');void a.offsetWidth;a.classList.add('pgin')}
+ if(!keep){try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}}
 }
 function wcard(x,i,extra=''){return `<div class="card" style="animation-delay:${Math.min(i,12)*.03}s"><div class="row"><div><div class="en">${esc(x.w)}</div><div class="bn">${esc(x.b)}</div>${x.s?`<div class="ex">${esc(x.s)}</div>`:''}</div><div style="display:flex;gap:6px"><button class="ib" onclick="sp('${esc(x.w)}')">🔊</button>${x.s?`<button class="ib" title="sentence" onclick="sp('${esc(x.s)}')">🗣️</button>`:''}</div></div>${extra}</div>`}
 let LIM=60;
 function shown(r){return r.slice(0,LIM).map(x=>wcard(x,0)).join('')+(r.length>LIM?`<button class="btn" onclick="showMore()">আরও দেখুন (${r.length-LIM}টি বাকি) ⬇️</button>`:'')}
 function rDict(){
  $('#app').innerHTML=`<div class="card"><input id="q" placeholder="🔍 শব্দ খুঁজুন (English বা বাংলা)…"><div class="small" style="margin-top:6px">মোট ${DICT.length}টি শব্দ • 🔊 চাপলে উচ্চারণ শুনবেন</div></div><div id="l"></div>`;
- const L=v=>{v=v.trim().toLowerCase();const r=DICT.filter(x=>!v||x.w.includes(v)||x.b.includes(v));$('#l').innerHTML=(r.length?shown(r):'<div class="card">শব্দটি তালিকায় নেই 🙈 অন্য বানানে চেষ্টা করুন।</div>')};
- $('#q').oninput=e=>{clearTimeout(window._dt);const v=e.target.value;window._dt=setTimeout(()=>{LIM=60;L(v)},120)};window.showMore=()=>{LIM+=100;L($('#q').value)};L('');
+ const L=v=>{v=v.trim().toLowerCase();const r=window._dres=DICT.filter(x=>!v||x.w.includes(v)||x.b.includes(v));$('#l').innerHTML=(r.length?shown(r):'<div class="card">শব্দটি তালিকায় নেই 🙈 অন্য বানানে চেষ্টা করুন।</div>')};
+ $('#q').oninput=e=>{clearTimeout(window._dt);const v=e.target.value;window._dt=setTimeout(()=>{LIM=60;L(v)},120)};window.showMore=()=>{const r=window._dres||[],a=LIM;LIM+=100;const l=$('#l'),b=l.querySelector('button.btn');if(b)b.remove();l.insertAdjacentHTML('beforeend',r.slice(a,LIM).map(x=>wcard(x,0)).join('')+(r.length>LIM?`<button class="btn" onclick="showMore()">আরও দেখুন (${r.length-LIM}টি বাকি) ⬇️</button>`:''))};L('');
 }
 const NB=1+Math.ceil(POOL.length/50),BATCH=b=>{b%=NB;return b?POOL.slice((b-1)*50,b*50):DAILY};
 function rDaily(){
@@ -1193,28 +1221,37 @@ ${P.n}:`,{cache:false,modelTier:'quick'});
  busy=false}
 const THEMES={
  book:{n:'Book',g:'radial-gradient(circle at 49% 84%,rgba(117,102,71,.2),transparent 34%),radial-gradient(circle at 14% 4%,rgba(100,112,77,.12),transparent 28%),linear-gradient(180deg,#343025 0%,#29251d 48%,#211e18 100%)',b:'#29251d',c:['transparent','transparent','transparent']},
- ocean:{n:'Ocean',g:'linear-gradient(120deg,#052e3f,#064e5a,#0a3d6b,#0b5a45)',b:'#041f2b',c:['#12c4a0','#36d1dc','#8ff0d0']},
- aurora:{n:'Aurora',g:'linear-gradient(135deg,#0a0a2c,#1a1466 38%,#3b1b8f 70%,#6a1b9a)',b:'#0a0a2c',c:['#06b6d4','#a855f7','#ec4899']},
- midnight:{n:'Midnight',g:'linear-gradient(160deg,#000000,#0b0f1a 55%,#111827)',b:'#000000',c:['#3b82f6','#8b5cf6','#14b8a6']},
  sunset:{n:'Sunset',g:'linear-gradient(135deg,#2a0a3f,#7a1f5c 45%,#c2410c 85%,#b45309)',b:'#2a0a3f',c:['#fb7185','#f59e0b','#f472b6']},
- royal:{n:'Royal',g:'linear-gradient(135deg,#0f0c29,#302b63 55%,#24243e)',b:'#0f0c29',c:['#fbbf24','#818cf8','#f59e0b']},
- rose:{n:'Rose',g:'linear-gradient(135deg,#3b0a2a,#7a1250 50%,#be185d)',b:'#3b0a2a',c:['#fb7185','#f9a8d4','#fda4af']},
  neon:{n:'Neon',g:'linear-gradient(145deg,#020617,#0f172a 45%,#042f2e)',b:'#020617',c:['#22d3ee','#a3e635','#f472b6']},
  forest:{n:'Forest',g:'linear-gradient(120deg,#08372f,#0c6a50,#14805c,#0e6e4c)',b:'#07322a',c:['#34d399','#5eead4','#bef264']}};
-function applyTheme(k){const T=THEMES[k]||THEMES.ocean,bg=document.querySelector('.bg'),mt=document.querySelector('meta[name="theme-color"]');
+function applyTheme(k){if(!THEMES[k])k='book';const T=THEMES[k],bg=document.querySelector('.bg'),mt=document.querySelector('meta[name="theme-color"]');
  if(bg){bg.style.background=T.g;[...bg.querySelectorAll('i')].forEach((el,i)=>el.style.background='radial-gradient(circle,'+T.c[i]+',transparent 68%)')}
- document.body.style.background=T.b;if(mt)mt.setAttribute('content',T.b);
+ document.body.style.background=T.b;document.documentElement.style.setProperty('--tbg',T.b+'f2');if(mt)mt.setAttribute('content',T.b);
  try{localStorage.setItem('eng-th',k);document.body.classList.toggle('bk',k==='book');window.bkSync&&bkSync()}catch(e){}
  document.querySelectorAll('.thc').forEach(x=>x.classList.toggle('on',x.dataset.k===k))}
-(function(){let k='ocean';try{k=localStorage.getItem('eng-th')||'ocean'}catch(e){}applyTheme(k)})();
+(function(){let k='book';try{k=localStorage.getItem('eng-th')||'book'}catch(e){}applyTheme(k)})();
 
 
 render();
 (function(){const o=document.getElementById("off");if(!o)return;
- if(location.protocol==="file:"){o.textContent="";return}
- if(!("serviceWorker"in navigator)){return}
- o.textContent="⏳ অফলাইন মোড প্রস্তুত হচ্ছে…";
- navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{o.textContent=""}).catch(()=>{o.textContent=""})})();
+ const say=t=>{o.textContent=t};
+ const OK="📶 অফলাইনে ব্যবহারের জন্য প্রস্তুত ✅";
+ if(location.protocol==="file:"){say("📁 ফাইল থেকে খুলেছেন — অ্যাপ ইন্টারনেট ছাড়াই চলবে");return}
+ try{if(window.top!==window){say("👀 প্রিভিউ — অফলাইনের জন্য ZIP ফাইলটি https হোস্টিং-এ দিন");return}}catch(e){say("👀 প্রিভিউ — অফলাইনের জন্য ZIP ফাইলটি https হোস্টিং-এ দিন");return}
+ if(!("serviceWorker"in navigator)){say("⚠️ এই ব্রাউজারে অফলাইন সাপোর্ট নেই — Chrome বা Safari ব্যবহার করুন");return}
+ if(!window.isSecureContext){say("⚠️ অফলাইনের জন্য https লিংক লাগবে (Netlify / GitHub Pages)");return}
+ say("⏳ অফলাইন মোড প্রস্তুত হচ্ছে…");
+ try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+ const has=async()=>{try{return !!(await caches.match("index.html",{ignoreSearch:true}))}catch(e){return false}};
+ const verify=async n=>{if(await has()){say(OK);return}
+  if(n>3){say("⚠️ অফলাইন প্রস্তুত হয়নি — ইন্টারনেট চালু রেখে অ্যাপটি আবার খুলুন");return}
+  try{const r=await navigator.serviceWorker.ready;r.active&&r.active.postMessage("recache")}catch(e){}
+  setTimeout(()=>verify(n+1),1800)};
+ navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(()=>navigator.serviceWorker.ready).then(()=>verify(0)).catch(()=>say("⚠️ অফলাইন চালু করা যায়নি — ফোল্ডারটি https হোস্টিং-এ রাখুন"));
+ addEventListener("offline",()=>say("✈️ অফলাইন মোড — শেখা চালিয়ে যান"));
+ addEventListener("online",()=>verify(0));
+ if(navigator.onLine===false)say("✈️ অফলাইন মোড — শেখা চালিয়ে যান");
+})();
 </script>
 <script id="menu-js">
 /* three-line menu: Game, Translator, Speaking, AI Friend and the Theme picker */
@@ -1235,7 +1272,7 @@ render();
   const ov=document.getElementById('mnov'),pn=document.getElementById('mnu');
   if(!ov||!pn)return;
   const icon=k=>'<span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[k]+'</svg></span>';
-  let cur_th='ocean';try{cur_th=localStorage.getItem('eng-th')||'ocean'}catch(e){}
+  let cur_th='book';try{cur_th=localStorage.getItem('eng-th')||'book'}catch(e){}if(!THEMES[cur_th])cur_th='book';
   pn.innerHTML=
     '<div class="mh"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#eelogo"/></svg><b>Easy English</b><button class="mx" type="button" data-x aria-label="Close menu">Close</button></div>'+
     ITEMS.map((x,i)=>'<button class="mi" type="button" data-go="'+x[0]+'" style="--k:'+i+'">'+icon(x[0])+'<span class="tx"><b>'+x[1]+'</b><small>'+x[2]+'</small></span></button>').join('')+
@@ -1278,12 +1315,12 @@ render();
 
   /* title on the cover -> section it opens */
   const BOOKS = [
-    { tab: 'dict',  title: 'Dictionary' },
-    { tab: 'sent',  title: 'Daily Use Sentence' },
-    { tab: 'daily', title: 'Daily Use Word' },
-    { tab: 'quiz',  title: 'Quiz' },
-    { tab: 'hw',    title: 'Easy Word' },
-    { tab: 'hard',  title: 'Easy Sentence' }
+    { tab: 'dict',  title: 'Dictionary', mark: 'Aa' },
+    { tab: 'sent',  title: 'Daily Use Sentence', mark: '\u201c\u201d' },
+    { tab: 'daily', title: 'Daily Use Word', mark: 'W' },
+    { tab: 'quiz',  title: 'Quiz', mark: '?' },
+    { tab: 'hw',    title: 'Easy Word', mark: '\u2726' },
+    { tab: 'hard',  title: 'Easy Sentence', mark: '\u00b6' }
   ];
 
   const doc = document;
@@ -1308,8 +1345,8 @@ render();
   function bookMarkup(book, i) {
     return '<button class="bk-card" type="button" data-tab="' + book.tab + '" style="--i:' + i + '" aria-label="Open ' + book.title + '">' +
       '<span class="bk-rise"><span class="bk-book" aria-hidden="true">' +
-        '<span class="bk-shadow"></span><span class="bk-back"></span><span class="bk-pages"></span>' +
-        '<span class="bk-front"><span class="bk-face"><span class="bk-title">' + book.title + '</span></span><span class="bk-inner"></span></span>' +
+        '<span class="bk-shadow"></span><span class="bk-back"></span><span class="bk-pages"></span><span class="bk-ribbon"></span>' +
+        '<span class="bk-front"><span class="bk-face"><span class="bk-title">' + book.title + '</span><span class="bk-emblem">' + book.mark + '</span></span><span class="bk-inner"></span></span>' +
         '<span class="bk-open">Open</span>' +
       '</span></span></button>';
   }

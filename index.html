@@ -463,6 +463,55 @@ body{overscroll-behavior-y:contain}
   transform:translate3d(0,0,-8px);transform-origin:50% 0;animation:bkRibbon 5.5s ease-in-out infinite;animation-delay:calc(var(--i) * -.9s)}
 @keyframes bkRibbon{50%{transform:translate3d(0,0,-8px) rotate(4deg)}}
 </style>
+<style id="brown-css">
+/* Book theme: dark brown pages, clearer text, coloured buttons */
+:root{--bk-ink:#2b1d14;--bk-text:#f4e8d1;--bk-muted:#dccba9;--bk-moss:#6f7a52}
+body.bk{background:#2b1d14}
+body.bk .card,body.bk .tile{background:rgba(96,64,40,.74);border-color:rgba(232,190,136,.26);box-shadow:0 12px 26px rgba(16,9,3,.34)}
+body.bk .chip,body.bk input,body.bk textarea,body.bk select,body.bk .opt{background:rgba(58,38,24,.74);border-color:rgba(232,190,136,.28)}
+body.bk .bar{background:rgba(48,31,19,.62)}
+body.bk .topbar{background:rgba(82,54,34,.96);border-color:rgba(244,232,209,.1)}
+body.bk .small,body.bk .td,body.bk .bn{color:var(--bk-muted)}
+body.bk .btn.done{background:#7f8c5b!important;color:#fffaf0!important}
+body.bk .btn.on,body.bk .btn.alt.on{background:#e0b878!important;color:#2b1d14!important}
+body.bk .opt.sel{outline-color:#e0b878;background:rgba(224,184,120,.22)}
+body.bk .lt{background:rgba(58,38,24,.8);border-color:rgba(232,190,136,.3);color:var(--bk-text)}
+body.bk .mfb{background:rgba(58,38,24,.85);color:var(--bk-pink);border-color:rgba(232,190,136,.32)}
+body.bk .mff{background:var(--bk-paper);color:#30291f;border-color:transparent}
+body.bk .mfc.ok .mff{background:#7f8c5b;color:#fffaf0}
+body.bk .tense{background:rgba(52,33,21,.82);color:var(--bk-text);border:1px solid rgba(232,190,136,.2)}
+.brow{display:flex;gap:8px;margin-top:8px}.brow .btn{flex:1;margin:0!important}
+.btn.on{background:#f59e0b;color:#1a1200}
+.mf{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.mfc{perspective:700px;border:0;background:none;padding:0;height:78px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mfi{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.mfc.f .mfi{transform:rotateY(180deg)}
+.mfb,.mff{position:absolute;inset:0;display:grid;place-items:center;padding:4px;border-radius:12px;border:1px solid #ffffff40;text-align:center;font-size:15px;font-weight:700;word-break:break-word;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.mfb{background:#ffffff1c;color:#fff;font-size:24px}
+.mff{background:#12c4a066;color:#fff;transform:rotateY(180deg)}
+.mfc.ok .mff{background:#1fbf75aa}
+</style>
+<style id="install-css">
+[hidden]{display:none!important}
+#inst{position:fixed;z-index:45;top:calc(14px + env(safe-area-inset-top,0px));right:14px;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px 0 12px;
+  border-radius:999px;border:1px solid #ffffff55;background:linear-gradient(135deg,#12c4a0,#2563eb);color:#fff;font-weight:700;font-size:13px;cursor:pointer;
+  box-shadow:0 8px 22px #0006;-webkit-tap-highlight-color:transparent;animation:instIn .7s cubic-bezier(.22,1,.36,1) .4s both;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+#inst:active{transform:scale(.94)}
+#inst svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;animation:instArrow 1.8s ease-in-out infinite}
+@keyframes instIn{from{opacity:0;transform:translate3d(0,-14px,0)}to{opacity:1;transform:none}}
+@keyframes instArrow{0%,100%{transform:translateY(-1.5px)}50%{transform:translateY(2px)}}
+body.bk #inst{background:var(--bk-gold);color:#2e261d;border:0;box-shadow:0 8px 22px rgba(18,10,4,.4)}
+#inm{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;background:rgba(8,6,3,.55);animation:pgin .3s ease both}
+#inm .sh{width:min(100%,460px);background:#10163a;color:#fff;border-radius:24px 24px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -16px 50px rgba(0,0,0,.4);animation:shUp .5s cubic-bezier(.22,1,.36,1) both}
+@keyframes shUp{from{transform:translate3d(0,40px,0);opacity:0}to{transform:none;opacity:1}}
+#inm .hd{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+#inm .hd svg{width:46px;height:46px;border-radius:13px;flex:none;overflow:hidden}
+#inm .hd b{font-size:19px;line-height:1.25}
+#inm ol{margin:8px 0 16px;padding-left:22px;line-height:1.75;font-size:15px}
+body.bk #inm .sh{background:#3a281b;color:var(--bk-text)}
+@media (prefers-reduced-motion:reduce){#inst,#inst svg,#inm,#inm .sh{animation:none!important}}
+</style>
 </head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="eelogo" viewBox="0 0 512 512"><defs>
 <linearGradient id="eeBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset=".55" stop-color="#2563eb"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
@@ -485,6 +534,7 @@ body{overscroll-behavior-y:contain}
 <header><button id="mbtn" class="mbtn" type="button" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><i></i><i></i><i></i></button><svg class="logo" viewBox="0 0 512 512" width="72" height="72" aria-hidden="true"><use href="#eelogo"/></svg><h1>Easy English</h1><div class="sub">সহজে ইংরেজি শিখুন – প্রতিদিন একটু একটু করে</div><div id="off" class="small"></div></header><div id="stat" aria-live="polite"></div>
 <nav id="nav"></nav><main id="app"></main>
 <footer>Developed By <b>Nahin</b> 💚</footer>
+<button id="inst" type="button" data-inst data-install hidden aria-label="অ্যাপ ইনস্টল করুন"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 19.5h14"/></svg><span>অ্যাপ ইনস্টল</span></button>
 <div id="mnov"></div><aside id="mnu" aria-hidden="true" aria-label="Menu"></aside>
 <div id="cel"><div class="box"><div style="font-size:60px">🏆</div><h2>অভিনন্দন! 🎉</h2><p>এই টাস্কের সব শব্দ শেষ! তুমি দারুণ করছ। কাল আবার নতুন শব্দ নিয়ে দেখা হবে।</p><button class="btn alt" onclick="cel.style.display='none'">ধন্যবাদ 💜</button> <button class="btn" onclick="nextTask()">🚀 নতুন টাস্ক</button></div></div>
 <script>
@@ -887,13 +937,20 @@ async function doTr(v,d){
  if(typeof claude!=="undefined"){try{const sm=await claude.use("sample");if(sm){const r=await sm(`Translate the following text into ${d==="en"?"Bangla (Bengali script)":"natural English"}. Output ONLY the translation.\n\n${v}`,{cache:true});return{t:r.text.trim(),src:"AI অনুবাদ"}}}catch(e){}}
  const hit=ALLS().find(x=>nz(d==="en"?x.e:x.b)===nz(v));
  if(hit)return{t:d==="en"?hit.b:hit.e,src:"অ্যাপের বাক্য-তালিকা"};
- try{if(navigator.onLine===false)return null;const r=await fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(v)+"&langpair="+(d==="en"?"en|bn":"bn|en"));const j=await r.json(),t=j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t))return{t,src:"অনলাইন অনুবাদ"}}catch(e){}
- return null}
+ try{if(navigator.onLine===false)return offTr(v,d);const r=await fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(v)+"&langpair="+(d==="en"?"en|bn":"bn|en"));const j=await r.json(),t=j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY WARNING|INVALID/i.test(t))return{t,src:"অনলাইন অনুবাদ"}}catch(e){}
+ return offTr(v,d)}
+function offTr(v,d){const m=DM();if(!offTr.r){offTr.r=new Map();DICT.forEach(x=>{const k=x.b.trim();if(!offTr.r.has(k))offTr.r.set(k,x.w)})}
+ const look=w=>{w=w.toLowerCase();if(m.has(w))return m.get(w);for(const[a,b]of[['ies','y'],['es',''],['s',''],['ed',''],['d',''],['ing',''],['ing','e'],['ly','']]){if(w.length>a.length+2&&w.endsWith(a)){const s=w.slice(0,-a.length)+b;if(m.has(s))return m.get(s)}}return null};
+ let hit=0,tot=0,t;
+ if(d==="en"){t=v.replace(/[A-Za-z']+/g,w=>{if(/^(the|a|an)$/i.test(w))return"";tot++;const r=look(w);if(r){hit++;return r}return w}).replace(/ {2,}/g," ").trim()}
+ else{t=v.split(/(\s+)/).map(p=>{if(!p.trim())return p;const c=p.replace(/[।,.?!;:"“”()]/g,"");tot++;const r=offTr.r.get(c);if(r){hit++;return p.replace(c,r)}return p}).join("")}
+ if(!hit)return null;
+ return{t,src:"অফলাইন শব্দে-শব্দে অনুবাদ ("+hit+"/"+tot+" শব্দ মিলেছে)"}}
 function chips(txt){const m=DM();return[...new Set(txt.toLowerCase().match(/[a-z]+/g)||[])].filter(w=>m.has(w)).slice(0,18).map(w=>`<span class="chip" onclick="sp('${w}')">${w} = ${m.get(w)}</span>`).join("")}
 function rTR(){
- $('#app').innerHTML=`<div class="card"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ${TD==="en"?"":"alt"}" onclick="setTD('en')">English → বাংলা</button><button class="btn ${TD==="bn"?"":"alt"}" onclick="setTD('bn')">বাংলা → English</button></div><textarea id="ti2" rows="4" style="margin-top:10px" placeholder="${TD==="en"?"এখানে ইংরেজি বাক্য লিখুন…":"এখানে বাংলায় বাক্য লিখুন…"}"></textarea><button class="btn" id="tb2">অনুবাদ করো 🔁</button><div class="small" style="margin-top:8px">📡 শুধু অনুবাদের জন্য ইন্টারনেট/Wi-Fi দরকার। বাকি সব অপশন অফলাইনে চলে।</div></div><div id="to"></div>`;
+ $('#app').innerHTML=`<div class="card"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ${TD==="en"?"":"alt"}" onclick="setTD('en')">English → বাংলা</button><button class="btn ${TD==="bn"?"":"alt"}" onclick="setTD('bn')">বাংলা → English</button></div><textarea id="ti2" rows="4" style="margin-top:10px" placeholder="${TD==="en"?"এখানে ইংরেজি বাক্য লিখুন…":"এখানে বাংলায় বাক্য লিখুন…"}"></textarea><button class="btn" id="tb2">অনুবাদ করো 🔁</button><div class="small" style="margin-top:8px">📡 পুরো বাক্যের ভালো অনুবাদে ইন্টারনেট লাগে। ইন্টারনেট না থাকলে অ্যাপের শব্দভান্ডার থেকে শব্দে-শব্দে অফলাইন অনুবাদ পাবেন।</div></div><div id="to"></div>`;
  $('#tb2').onclick=async()=>{const v=$('#ti2').value.trim();if(!v)return;const o=$('#to');o.innerHTML='<div class="card">অনুবাদ হচ্ছে… ⏳</div>';const r=await doTr(v,TD),en=TD==="en"?v:(r?r.t:"");
-  o.innerHTML=(TD==="en"?`<div class="card row"><div class="en">${esc(v)}</div><button class="ib" data-t="${esc(v)}" onclick="sp(this.dataset.t)">🔊</button></div>`:"")+(r?`<div class="card"><div class="small">${TD==="en"?"বাংলা অনুবাদ":"English translation"} • ${r.src}</div><div class="en" style="white-space:pre-wrap;margin-top:6px">${esc(r.t)}</div>${TD==="bn"?`<button class="ib" data-t="${esc(r.t)}" onclick="sp(this.dataset.t)">🔊</button>`:""}<div class="small" style="margin-top:8px">ℹ️ অনুবাদ যান্ত্রিক — গুরুত্বপূর্ণ কাজে মিলিয়ে নিন।</div></div>`:`<div class="card">😕 অনুবাদ করা যায়নি। অনুবাদের জন্য ইন্টারনেট/Wi-Fi দরকার — চালু করে আবার চেষ্টা করুন। (বাকি সব অপশন অফলাইনে চলে)</div>`);
+  o.innerHTML=(TD==="en"?`<div class="card row"><div class="en">${esc(v)}</div><button class="ib" data-t="${esc(v)}" onclick="sp(this.dataset.t)">🔊</button></div>`:"")+(r?`<div class="card"><div class="small">${TD==="en"?"বাংলা অনুবাদ":"English translation"} • ${r.src}</div><div class="en" style="white-space:pre-wrap;margin-top:6px">${esc(r.t)}</div>${TD==="bn"?`<button class="ib" data-t="${esc(r.t)}" onclick="sp(this.dataset.t)">🔊</button>`:""}${TD==="en"?"<div style=\"margin-top:8px\">"+chips(v)+"</div>":""}<div class="small" style="margin-top:8px">ℹ️ অনুবাদ যান্ত্রিক — গুরুত্বপূর্ণ কাজে মিলিয়ে নিন।</div></div>`:`<div class="card">😕 অনুবাদ করা যায়নি। অনুবাদের জন্য ইন্টারনেট/Wi-Fi দরকার — চালু করে আবার চেষ্টা করুন। (বাকি সব অপশন অফলাইনে চলে)</div>`);
   const c=en?chips(en):"";if(c)o.insertAdjacentHTML("beforeend",`<div class="card"><div class="small">📖 শব্দের অর্থ (ট্যাপ করলে উচ্চারণ)</div>${c}</div>`)}}
 let HK={};try{HK=JSON.parse(localStorage.getItem('eng-hk')||'{}')}catch(e){}
 let HL=60;
@@ -1038,7 +1095,7 @@ ls:B=>{const w=poolW();B.innerHTML=`<div class="card"><div class="small">🔊 �
  $("#lc").onclick=()=>{const v=$("#li").value.trim().toLowerCase(),ok=v===w.w;$("#go").innerHTML=ok?`<div class="cmp good"><b>✅ সঠিক! ${w.w}</b> = ${esc(w.b)}</div>`:`<div class="cmp bad"><b>❌ ভুল</b><br>সঠিক বানান: <b>${w.w}</b> = ${esc(w.b)}</div>`;$("#go").innerHTML+='<button class="btn" onclick="render()">পরের শব্দ ➡️</button>';if(ok)GP(1)}}};
 function rGames(){
  clearInterval(GS.t);const A=$("#app");
- if(!GM){A.innerHTML=`<div class="card small">🎮 ৬টি গেম • সব অফলাইনে চলে • পয়েন্ট ফোনে সেভ থাকে <b id="gs">⭐ ${GPT}</b></div><div class="grid">${[["mt","🃏","Word Match","English ↔ বাংলা মিলাও"],["sc2","🔀","Word Scramble","এলোমেলো অক্ষর সাজাও"],["hm","🪢","Hangman","অক্ষর অনুমান করে শব্দ খোঁজো"],["sp","⚡","Speed Quiz","৬০ সেকেন্ডে যত পারো"],["sb","🧱","Sentence Builder","শব্দ সাজিয়ে বাক্য বানাও"],["ls","🎧","Listen & Spell","শুনে বানান লেখো"]].map(t=>`<div class="tile" onclick="setGM('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div></div>`).join("")}</div>`;return}
+ if(!GM){A.innerHTML=`<div class="card small">🎮 ১০টি গেম • সব অফলাইনে চলে • পয়েন্ট ফোনে সেভ থাকে <b id="gs">⭐ ${GPT}</b></div><div class="grid">${[["mt","🃏","Word Match","English ↔ বাংলা মিলাও"],["sc2","🔀","Word Scramble","এলোমেলো অক্ষর সাজাও"],["hm","🪢","Hangman","অক্ষর অনুমান করে শব্দ খোঁজো"],["sp","⚡","Speed Quiz","৬০ সেকেন্ডে যত পারো"],["sb","🧱","Sentence Builder","শব্দ সাজিয়ে বাক্য বানাও"],["ls","🎧","Listen & Spell","শুনে বানান লেখো"],["mf","🧠","Memory Flip","কার্ড উল্টে English–বাংলা জোড়া মেলাও"],["ml","🔤","Missing Letter","হারানো অক্ষর বসাও"],["fb","✍️","Fill the Blank","বাক্যের ফাঁকা শব্দ বসাও"],["wc","🔗","Word Chain","শেষ অক্ষর দিয়ে শব্দের শিকল"]].map(t=>`<div class="tile" onclick="setGM('${t[0]}')"><div class="ti">${t[1]}</div><div class="tn">${t[2]}</div><div class="td">${t[3]}</div></div>`).join("")}</div>`;return}
  A.innerHTML=`<div class="card row"><button class="btn alt" onclick="setGM(null)">⬅️ গেম মেনু</button><b id="gs">⭐ ${GPT}</b></div><div id="gb"></div>`;GAMES[GM]($("#gb"))}
 window.sp=speak;
 let AC={};try{AC=JSON.parse(localStorage.getItem('eng-ai')||'{}')}catch(e){}
@@ -1050,7 +1107,7 @@ window.aiLook=async v=>{const o=$('#aio');o.style.display='block';if(AC[v]){o.te
 let K={b:0,ids:[]};try{const s=JSON.parse(localStorage.getItem('eng-k2')||'null');if(s)K=s}catch(e){}
 const save=()=>{try{localStorage.setItem('eng-k2',JSON.stringify(K))}catch(e){}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const TABS=[['dict','📖','Dictionary','অভিধান – শব্দ খুঁজুন, উচ্চারণ শুনুন'],['daily','🌟','Daily Words','প্রতিদিনের ৫০ শব্দের টাস্ক'],['hw','🧩','Hard Words','কঠিন কিন্তু দরকারি শব্দ'],['quiz','🧠','Quiz','কুইজ খেলে শিখুন'],['games','🎮','Games','ইংরেজি শেখার ৬টি মজার গেম'],['tr','🔁','Translator','📡 অনুবাদ (ইন্টারনেট লাগবে)'],['sent','💬','Daily Sentences','দৈনন্দিন বাক্য ও Tense'],['hard','🔥','Hard Sentences','কঠিন কিন্তু কাজের বাক্য'],['speak','🎙️','Speaking','বলে বলে অনুশীলন করুন'],['ai','🤖','AI Friend','AI এর সাথে কথা বলে practice করুন']];
+const TABS=[['dict','📖','Dictionary','অভিধান – শব্দ খুঁজুন, উচ্চারণ শুনুন'],['daily','🌟','Daily Words','প্রতিদিনের ৫০ শব্দের টাস্ক'],['hw','🧩','Hard Words','কঠিন কিন্তু দরকারি শব্দ'],['quiz','🧠','Quiz','কুইজ খেলে শিখুন'],['games','🎮','Games','ইংরেজি শেখার ১০টি মজার গেম'],['tr','🔁','Translator','🔁 অনুবাদ (অফলাইনেও কাজ করে)'],['sent','💬','Daily Sentences','দৈনন্দিন বাক্য ও Tense'],['hard','🔥','Hard Sentences','কঠিন কিন্তু কাজের বাক্য'],['speak','🎙️','Speaking','বলে বলে অনুশীলন করুন'],['ai','🤖','AI Friend','AI এর সাথে কথা বলে practice করুন']];
 let cur='home';
 let _hd=0;
 window._ps=(t,s)=>{try{_hd++;history.pushState({t,s,d:_hd},'')}catch(e){}};
@@ -1137,12 +1194,14 @@ function rQuiz(){
     const r=await sm(`একজন বাংলাভাষী ইংরেজি শিখছে। শব্দ: "${w.w}". তার বাক্য: "${a}". বাংলায় ছোট করে বলো: বাক্যটি ঠিক কিনা, ভুল থাকলে কেন ভুল ও সংশোধিত বাক্য, আর একটি ভালো উদাহরণ।`,{cache:false});f.textContent=r.text;Q.n++}catch(e){f.textContent='AI সংযোগ হয়নি, আবার চেষ্টা করুন।'}}
  }
 }
+var SK={};try{SK=JSON.parse(localStorage.getItem('eng-sk')||'{}')}catch(e){}
+window.sk=el=>{const e=el.dataset.e,on=!SK[e];if(on)SK[e]=1;else delete SK[e];try{localStorage.setItem('eng-sk',JSON.stringify(SK))}catch(_){}el.classList.toggle('done',on);el.textContent=on?'✅ জানি':'জানি ✅'};
 function rSent(A){
  const H2=A===HARD;
  $('#app').innerHTML=`<div class="card">${H2?'🔥 কঠিন কিন্তু কাজের বাক্য':'💬 প্রতিদিনের বাক্য'} – “Tense” বাটনে বিস্তারিত দেখুন। <b>মোট ${A.length}টি বাক্য</b><input id="sq" style="margin-top:8px" placeholder="🔍 বাক্য বা বাংলা খুঁজুন…"></div><div id="sl"></div>`;
  let L=40;
  const D=v=>{v=v.trim().toLowerCase();const r=A.filter(x=>!v||x.e.toLowerCase().includes(v)||x.b.includes(v));
-  $('#sl').innerHTML=r.slice(0,L).map(x=>`<div class="card"><div class="row"><div><div class="en">${esc(x.e)}</div><div class="bn">${esc(x.b)}</div></div><button class="ib" onclick="sp(this.dataset.t)" data-t="${esc(x.e)}">🔊</button></div><button class="btn alt" onclick="var d=this.nextElementSibling;d.style.display=d.style.display=='block'?'none':'block'">📚 Tense</button><div class="tense" style="display:none">${esc(x.t)}</div></div>`).join('')+(r.length>L?`<button class="btn" id="sm2">আরও দেখুন (${r.length-L}টি বাকি) ⬇️</button>`:'');
+  $('#sl').innerHTML=r.slice(0,L).map(x=>`<div class="card"><div class="row"><div><div class="en">${esc(x.e)}</div><div class="bn">${esc(x.b)}</div></div><button class="ib" onclick="sp(this.dataset.t)" data-t="${esc(x.e)}">🔊</button></div><div class="brow"><button class="btn ${SK[x.e]?'done':''}" data-e="${esc(x.e)}" onclick="sk(this)">${SK[x.e]?'✅ জানি':'জানি ✅'}</button><button class="btn alt" onclick="var c=this.closest('.card'),d=c.querySelector('.tense'),o=d.style.display!='block';d.style.display=o?'block':'none';this.classList.toggle('on',o)">📚 Tense</button></div><div class="tense" style="display:none">${esc(x.t)}</div></div>`).join('')+(r.length>L?`<button class="btn" id="sm2">আরও দেখুন (${r.length-L}টি বাকি) ⬇️</button>`:'');
   const m=$('#sm2');if(m)m.onclick=()=>{L+=60;D($('#sq').value)}};
  D('');$('#sq').oninput=e=>{clearTimeout(window._st);const v=e.target.value;window._st=setTimeout(()=>{L=40;D(v)},150)};
 }
@@ -1220,7 +1279,7 @@ ${P.n}:`,{cache:false,modelTier:'quick'});
  }catch(e){const m=H[H.length-1];m.err=1;m.content=e.message==='noai'?'AI এখানে চালু নেই। (Claude এর ভেতরে খুললে কাজ করবে।)':'সংযোগ হয়নি 😕 আবার চেষ্টা করুন।';draw()}
  busy=false}
 const THEMES={
- book:{n:'Book',g:'radial-gradient(circle at 49% 84%,rgba(117,102,71,.2),transparent 34%),radial-gradient(circle at 14% 4%,rgba(100,112,77,.12),transparent 28%),linear-gradient(180deg,#343025 0%,#29251d 48%,#211e18 100%)',b:'#29251d',c:['transparent','transparent','transparent']},
+ book:{n:'Book',g:'radial-gradient(circle at 49% 84%,rgba(176,112,58,.22),transparent 36%),radial-gradient(circle at 14% 4%,rgba(140,92,52,.14),transparent 30%),linear-gradient(180deg,#3b2a1d 0%,#2b1d14 48%,#21160e 100%)',b:'#2b1d14',c:['transparent','transparent','transparent']},
  sunset:{n:'Sunset',g:'linear-gradient(135deg,#2a0a3f,#7a1f5c 45%,#c2410c 85%,#b45309)',b:'#2a0a3f',c:['#fb7185','#f59e0b','#f472b6']},
  neon:{n:'Neon',g:'linear-gradient(145deg,#020617,#0f172a 45%,#042f2e)',b:'#020617',c:['#22d3ee','#a3e635','#f472b6']},
  forest:{n:'Forest',g:'linear-gradient(120deg,#08372f,#0c6a50,#14805c,#0e6e4c)',b:'#07322a',c:['#34d399','#5eead4','#bef264']}};
@@ -1261,11 +1320,12 @@ render();
     tr:'<path d="M4 6h9M8.5 4v2M6 6c.5 3 2.5 5.5 5.5 7M12 6c-.5 3-3 6-7 7.5"/><path d="M12.5 20l4-9 4 9M13.9 17h5.2"/>',
     speak:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/>',
     ai:'<path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M9 9.5h6M9 12.5h3.5"/>',
+    dl:'<path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 19.5h14"/>',
     theme:'<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>'
   };
   const ITEMS=[
-    ['games','Game','ইংরেজি শেখার মজার গেম'],
-    ['tr','Translator','অনুবাদ (ইন্টারনেট লাগবে)'],
+    ['games','Game','ইংরেজি শেখার ১০টি মজার গেম'],
+    ['tr','Translator','অনুবাদ (অফলাইনেও কাজ করে)'],
     ['speak','Speaking','বলে বলে অনুশীলন করুন'],
     ['ai','AI Friend','AI বন্ধুর সাথে কথা বলুন']
   ];
@@ -1276,7 +1336,8 @@ render();
   pn.innerHTML=
     '<div class="mh"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#eelogo"/></svg><b>Easy English</b><button class="mx" type="button" data-x aria-label="Close menu">Close</button></div>'+
     ITEMS.map((x,i)=>'<button class="mi" type="button" data-go="'+x[0]+'" style="--k:'+i+'">'+icon(x[0])+'<span class="tx"><b>'+x[1]+'</b><small>'+x[2]+'</small></span></button>').join('')+
-    '<button class="mi" type="button" data-theme aria-expanded="false" style="--k:'+ITEMS.length+'">'+icon('theme')+'<span class="tx"><b>Theme</b><small>অ্যাপের রঙ ও ডিজাইন বদলান</small></span><span class="ch"></span></button>'+
+    '<button class="mi" type="button" data-inst data-install hidden style="--k:'+ITEMS.length+'">'+icon('dl')+'<span class="tx"><b>Install App</b><small>ফোনে অ্যাপের মতো ইনস্টল করুন</small></span></button>'+
+    '<button class="mi" type="button" data-theme aria-expanded="false" style="--k:'+(ITEMS.length+1)+'">'+icon('theme')+'<span class="tx"><b>Theme</b><small>অ্যাপের রঙ ও ডিজাইন বদলান</small></span><span class="ch"></span></button>'+
     '<div class="mth"><div><div class="tg">'+Object.keys(THEMES).map(k=>'<button class="thc'+(k===cur_th?' on':'')+'" type="button" data-k="'+k+'"><i style="background:'+THEMES[k].g+'"></i><span>'+THEMES[k].n+'</span></button>').join('')+'</div></div></div>'+
     '<div class="mf">Developed by Nahin</div>';
 
@@ -1297,9 +1358,112 @@ render();
     if(t){applyTheme(t.dataset.k);render(true);return}
     const th=e.target.closest('[data-theme]');
     if(th){const on=!th.classList.contains('open');th.classList.toggle('open',on);th.setAttribute('aria-expanded',on?'true':'false');pn.querySelector('.mth').classList.toggle('open',on);return}
+    if(e.target.closest('[data-install]')){setOpen(false);setTimeout(()=>window.eeInstall&&window.eeInstall(),240);return}
     const g=e.target.closest('[data-go]');
     if(g){setOpen(false);setTimeout(()=>window.go(g.dataset.go),240)}
   });
+})();
+</script>
+<script id="install-js">
+/* "Install App": shows only while the app is not installed yet */
+(function(){
+ let dp=null;
+ const mq=q=>{try{return matchMedia(q).matches}catch(e){return false}};
+ const standalone=()=>mq('(display-mode: standalone)')||mq('(display-mode: fullscreen)')||mq('(display-mode: minimal-ui)')||navigator.standalone===true;
+ const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+ const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+ if(standalone())set('eng-inst','1');
+ const ua=navigator.userAgent||'';
+ const ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ let framed=false;try{framed=window.top!==window}catch(e){framed=true}
+ const secure=window.isSecureContext&&/^https?:$/.test(location.protocol);
+ const can=()=>secure&&!standalone()&&get('eng-inst')!=='1'&&!framed&&(!!dp||ios);
+ const refresh=()=>{const on=can();document.querySelectorAll('[data-inst]').forEach(e=>{e.hidden=!on})};
+ addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;refresh()});
+ addEventListener('appinstalled',()=>{set('eng-inst','1');dp=null;closeSheet();refresh()});
+ try{matchMedia('(display-mode: standalone)').addEventListener('change',e=>{if(e.matches)set('eng-inst','1');refresh()})}catch(e){}
+ function closeSheet(){const s=document.getElementById('inm');if(s)s.remove()}
+ function openSheet(){
+  closeSheet();
+  const steps=ios
+   ?'<li>নিচে বা ওপরে থাকা <b>Share</b> (⬆️) বাটন চাপুন</li><li><b>Add to Home Screen</b> বেছে নিন</li><li>ডানে ওপরে <b>Add</b> চাপুন — ব্যস, ফোনে অ্যাপ চলে আসবে</li>'
+   :'<li>ব্রাউজারের ওপরে ডানে <b>⋮</b> মেনু চাপুন</li><li><b>Install app</b> বা <b>Add to Home screen</b> বেছে নিন</li><li><b>Install</b> চাপুন — ব্যস, ফোনে অ্যাপ চলে আসবে</li>';
+  const d=document.createElement('div');d.id='inm';
+  d.innerHTML='<div class="sh" role="dialog" aria-label="অ্যাপ ইনস্টল"><div class="hd"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#eelogo"/></svg><b>Easy English<br>ফোনে অ্যাপ হিসেবে ইনস্টল করুন</b></div><ol>'+steps+'</ol><button class="btn" type="button" data-x style="width:100%">বুঝেছি</button></div>';
+  d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-x]'))closeSheet()});
+  document.body.appendChild(d);
+ }
+ window.eeInstall=async()=>{
+  if(dp){const p=dp;dp=null;try{p.prompt();const r=await p.userChoice;if(r&&r.outcome==='accepted')set('eng-inst','1')}catch(e){}refresh();return}
+  openSheet();
+ };
+ document.querySelectorAll('[data-install]').forEach(b=>{if(b.id==='inst')b.addEventListener('click',()=>window.eeInstall())});
+ addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+ refresh();
+})();
+</script>
+<script id="games2-js">
+/* four more games: Memory Flip, Missing Letter, Fill the Blank, Word Chain */
+(function(){
+ const sh=a=>a.slice().sort(()=>Math.random()-.5);
+ const LET='abcdefghijklmnopqrstuvwxyz';
+ const endBox=(sc,R)=>`<div class="card"><div class="cmp good"><b>🏁 খেলা শেষ! স্কোর ${sc}/${R}</b></div><button class="btn" onclick="render()">আবার খেলো ➡️</button></div>`;
+ Object.assign(GAMES,{
+ mf:B=>{
+  const ws=[];while(ws.length<6){const w=rnd(DICT);if(/^[a-z]{3,9}$/.test(w.w)&&w.b.length<16&&!ws.some(x=>x.w===w.w||x.b===w.b))ws.push(w)}
+  const cards=sh(ws.flatMap(w=>[{k:w.w,t:w.w,e:1},{k:w.w,t:w.b,e:0}]));
+  let a=null,lock=false,left=6,mv=0;
+  B.innerHTML=`<div class="small" style="margin:6px 0">দুটি কার্ড উল্টে English আর বাংলা অর্থ মেলাও। চাল: <b id="mfm">0</b></div><div class="mf">${cards.map((c,i)=>`<button class="mfc" data-i="${i}"><span class="mfi"><span class="mfb">?</span><span class="mff">${esc(c.t)}</span></span></button>`).join('')}</div><div id="mfo"></div>`;
+  B.onclick=e=>{const b=e.target.closest('.mfc');if(!b||lock||b.classList.contains('f'))return;
+   const c=cards[+b.dataset.i];b.classList.add('f');if(c.e)sp(c.k);
+   if(!a){a=b;return}
+   mv++;$('#mfm').textContent=mv;const ca=cards[+a.dataset.i];
+   if(ca.k===c.k&&ca.e!==c.e){a.classList.add('ok');b.classList.add('ok');a=null;GP(1);
+    if(--left===0){GP(2);$('#mfo').innerHTML=`<div class="cmp good"><b>🎉 দারুণ! ${mv} চালে সব মিলেছে</b></div><button class="btn" onclick="render()">আবার খেলো ➡️</button>`}}
+   else{lock=true;const x=a;a=null;setTimeout(()=>{x.classList.remove('f');b.classList.remove('f');lock=false},800)}};
+ },
+ ml:B=>{let n=0,sc=0;const R=5;
+  const round=()=>{if(n>=R){B.innerHTML=endBox(sc,R);return}
+   n++;const w=poolW(),i=1+Math.floor(Math.random()*(w.w.length-2)),ans=w.w[i];
+   let o=[ans];while(o.length<4){const c=LET[Math.floor(Math.random()*26)];if(!o.includes(c))o.push(c)}o=sh(o);
+   const shown=w.w.split('').map((c,j)=>j===i?'_':c).join(' ');
+   B.innerHTML=`<div class="card"><div class="small">প্রশ্ন ${n}/${R} • স্কোর ${sc}</div><div style="margin-top:6px">অর্থ: <b>${esc(w.b)}</b></div><div class="big">${shown}</div><div>${o.map(c=>`<button class="lt" data-c="${c}">${c}</button>`).join('')}</div><div id="mlo"></div></div>`;
+   B.querySelectorAll('.lt').forEach(b=>b.onclick=()=>{const ok=b.dataset.c===ans;B.querySelectorAll('.lt').forEach(x=>x.disabled=true);
+    $('#mlo').innerHTML=ok?`<div class="cmp good"><b>✅ সঠিক! ${esc(w.w)}</b></div>`:`<div class="cmp bad"><b>❌ সঠিক শব্দ: ${esc(w.w)}</b></div>`;
+    if(ok){sc++;GP(1)}sp(w.w);setTimeout(round,1400)})};
+  round()},
+ fb:B=>{let n=0,sc=0;const R=5;const S2=ALLS().filter(x=>{const k=x.e.split(' ').length;return k>=4&&k<=12});
+  const round=()=>{if(n>=R){B.innerHTML=endBox(sc,R);return}
+   n++;let s,idx,tries=0;do{s=rnd(S2);idx=[];s.e.split(' ').forEach((t,j)=>{if(j>0&&t.replace(/[^A-Za-z']/g,'').length>=4)idx.push(j)})}while(!idx.length&&++tries<40);
+   const toks=s.e.split(' '),j=rnd(idx),raw=toks[j],ans=raw.replace(/[^A-Za-z']/g,''),p=raw.indexOf(ans),pre=raw.slice(0,p),post=raw.slice(p+ans.length);
+   const ds=DICT.filter(x=>/^[a-z]+$/.test(x.w)&&Math.abs(x.w.length-ans.length)<=1&&x.w!==ans.toLowerCase());
+   let o=[ans];while(o.length<4){const c=rnd(ds).w;if(!o.some(z=>z.toLowerCase()===c))o.push(c)}o=sh(o);
+   const q=toks.map((t,k)=>k===j?pre+'_____'+post:t).join(' ');
+   B.innerHTML=`<div class="card"><div class="small">প্রশ্ন ${n}/${R} • স্কোর ${sc}</div><div class="en" style="margin-top:8px">${esc(q)}</div><div class="bn">${esc(s.b)}</div>${o.map(c=>`<button class="opt" data-c="${esc(c)}">${esc(c)}</button>`).join('')}<div id="fbo"></div></div>`;
+   B.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=b.dataset.c===ans;B.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.c===ans)x.classList.add('ok')});if(!ok)b.classList.add('no');
+    $('#fbo').innerHTML=ok?'<div class="cmp good"><b>✅ সঠিক!</b></div>':`<div class="cmp bad"><b>❌ সঠিক উত্তর: ${esc(ans)}</b></div>`;
+    if(ok){sc++;GP(2)}sp(s.e);setTimeout(round,1700)})};
+  round()},
+ wc:B=>{const W=DICT.filter(x=>/^[a-z]{3,9}$/.test(x.w)),M=new Map(W.map(x=>[x.w,x.b]));
+  const used=new Set();let last,lives=3,sc=0,log=[],msg='';
+  const cw=l=>{const c=W.filter(x=>x.w[0]===l&&!used.has(x.w));return c.length?rnd(c):null};
+  const first=rnd(W.filter(x=>x.w.length<=6));used.add(first.w);last=first.w.slice(-1);log=[{who:'আমি',w:first.w,b:first.b}];
+  const over=t=>{B.innerHTML=`<div class="card">${logH()}<div class="cmp ${t.good?'good':'bad'}"><b>${t.m}</b></div><div class="small">তোমার স্কোর: ${sc} শব্দ</div><button class="btn" onclick="render()">আবার খেলো ➡️</button></div>`};
+  const logH=()=>log.slice(-6).map(x=>`<div class="small"><b>${x.who}</b>: ${esc(x.w)} — ${esc(x.b)}</div>`).join('');
+  const draw=()=>{B.innerHTML=`<div class="card"><div class="small">আমার শেষ অক্ষর দিয়ে নতুন শব্দ লেখো। জীবন: ${lives} • স্কোর: ${sc}</div>${logH()}<div class="big" style="margin:8px 0">${last.toUpperCase()} …</div>${msg}<input id="wci" autocomplete="off" autocapitalize="none" placeholder="${last.toUpperCase()} দিয়ে শুরু হওয়া শব্দ লিখুন…"><button class="btn" id="wcb">জমা দাও</button><button class="btn alt" id="wcp">💡 ইঙ্গিত (১ জীবন যাবে)</button></div>`;
+   const fin=()=>{if(lives<=0)over({m:'😢 জীবন শেষ! আবার চেষ্টা করো।'})};
+   const submit=()=>{const v=$('#wci').value.trim().toLowerCase();if(!v)return;
+    if(v[0]!==last)msg=`<div class="cmp bad">❌ শব্দটি ${last.toUpperCase()} দিয়ে শুরু হতে হবে</div>`;
+    else if(used.has(v))msg='<div class="cmp bad">❌ এই শব্দ আগেই ব্যবহার হয়েছে</div>';
+    else if(!M.has(v))msg='<div class="cmp bad">❌ শব্দটি অ্যাপের তালিকায় নেই</div>';
+    else{used.add(v);sc++;GP(1);log.push({who:'তুমি',w:v,b:M.get(v)});sp(v);const c=cw(v.slice(-1));
+     if(!c){GP(3);return over({good:1,m:'🎉 আমি আর শব্দ খুঁজে পাচ্ছি না — তুমি জিতেছ!'})}
+     used.add(c.w);log.push({who:'আমি',w:c.w,b:c.b});last=c.w.slice(-1);msg='';return draw()}
+    lives--;if(lives<=0)return fin();draw()};
+   $('#wcb').onclick=submit;$('#wci').onkeydown=e=>{if(e.key==='Enter')submit()};
+   $('#wcp').onclick=()=>{const c=cw(last);lives--;if(lives<=0)return fin();msg=c?`<div class="cmp good">💡 ইঙ্গিত: <b>${esc(c.w)}</b> (${esc(c.b)})</div>`:'<div class="cmp bad">কোনো শব্দ পাওয়া গেল না</div>';draw()}};
+  draw()}
+ });
 })();
 </script>
 <script id="book-theme-js">
